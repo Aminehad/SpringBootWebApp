@@ -1,0 +1,19 @@
+stages:
+  - build-and-test
+  - deploy
+
+build:
+  stage: build-and-test
+  image: maven:3.9-eclipse-temurin-17-alpine
+  script:
+    - mvn clean package -B
+  artifacts:
+    paths:
+      - target/*.war
+
+test:
+  stage: build-and-test
+  image: maven:3.9-eclipse-temurin-17-alpine
+  script:
+    - mvn test -B
+# TODO: job push up the image to gitlab registry
