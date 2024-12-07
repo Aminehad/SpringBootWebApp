@@ -1,0 +1,304 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta charset="ISO-8859-1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecommerce</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="/styles/products.css" />
+  <link rel="stylesheet" href="/styles/shared.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
+  <style>
+    body {
+      font-family: "Josefin Sans";
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- ======= title Section ======= -->
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" href="/">
+      <img src="/pictures/logo.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="">L'atelier de les aides <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+        <a class="login" href="/login">Login</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <div class="carousel-item active" style="
+                background-image: url('https://th.bing.com/th/id/R.3414ac9b5f23a7de6a4891b664115de7?rik=apq0nMDBDEUSJw&pid=ImgRaw&r=0');
+              ">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">
+                  <span>L'atelier de les aides</span>
+                </h2>
+                <p class="animate__animated animate__fadeInUp">
+                  Un simple geste de gentillesse peut illuminer la journée de quelqu'un. Let's help each other😊
+                </p>
+                <div>
+                  <a href="" class="btn-menu animate__animated animate__fadeInUp scrollto">Login</a>
+                  <a href="" class="btn-book animate__animated animate__fadeInUp scrollto">Register</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= filter Brands ======= -->
+
+  <div class="productsFound">220 Produits trouvés</div>
+  <!-- ======= End filter Brands ======= -->
+
+  <div class="content">
+
+    <div class="filters-container">
+      <div class="title">
+        <span>Filter</span>
+        <i class="bi bi-lightbulb-fill icon "></i>
+      </div>
+      <div class="filter">
+        <div class="label">
+          <span>Type de Produit</span>
+          <i class="bi bi-list-task icon"></i>
+        </div>
+        <div class="value">
+          <Select placeholder="PS4, Vétements, Enfants ..." type="text">
+            <option value="" label="non-selection"  ></option>
+            <option value="Table" label="Table"  ></option>
+            <option value="Vetments" label="Vetments"  ></option>
+            <option value="Jeu" label="Jeu"  ></option>
+            <option value="Autre" label="Autre"  ></option>
+          </Select>
+        </div>
+      </div>
+      <div class="filter">
+        <div class="label">
+          <span>Date de début</span>
+          <i class="bi bi-skip-start-circle icon"></i>
+        </div>
+        <div class="value">
+          <input  type="date">
+        </div>
+      </div>
+      <div class="filter">
+        <div class="label">
+          <span>Date de fin</span>
+          <i class="bi  bi-skip-end-circle icon"></i>
+        </div>
+        <div class="value">
+          <input  type="date">
+        </div>
+      </div>
+      <div class="filter">
+        <div class="label">
+          <span>Location</span>
+          <i class="bi bi-geo-fill icon"></i>
+        </div>
+        <div class="value">
+          <input placeholder="Clermont-Ferrand ..." type="text">
+        </div>
+      </div>
+      <div class="filter">
+        <div class="label">
+          <span>Livraison</span>
+          <i class="bi bi-badge-8k-fill icon"></i>
+        </div>
+        <div class="value">
+          <Select >
+            <option value="0" label="non-selection"  ></option>
+            <option value="1" label="A Main"  ></option>
+            <option value="2" label="Livraison"  ></option>
+          </Select>
+        </div>
+      </div>
+      <div class="filter">
+        <div class="label">
+          <span>Mots Clés</span>
+          <i class="bi bi-key-fill icon"></i>
+        </div>
+        <div class="value">
+          <input placeholder="PS4, Vétements, Enfants ..." type="text">
+        </div>
+      </div>
+      <div class="filter">
+        <div class="label">
+          <span>Etats</span>
+          <i class="bi bi-badge-8k-fill icon"></i>
+        </div>
+        <div class="value">
+          <Select placeholder="PS4, Vétements, Enfants ..." type="text">
+            <option value="" label="non-selection"  ></option>
+            <option value="1" label="1"  ></option>
+            <option value="2" label="2"  ></option>
+            <option value="3" label="3"  ></option>
+            <option value="4" label="4"  ></option>
+            <option value="5" label="5"  ></option>
+          </Select>
+        </div>
+      </div>
+    </div>
+
+  <div class="gallery">
+    <div class="sort-container">
+      <div class="sort-icons">
+        <div class="sort-icon active"><i class="bi bi-sort-down"></i></div>
+        <div class="sort-icon"><i class="bi bi-sort-up-alt"></i></div>
+      </div>
+      <div class="sort-value">
+        <Select  title="Trier">
+          <option value="0" label="Trier" selected disabled ></option>
+          <option value="1" label="Date de début" ></option>
+          <option value="2" label="Date de fin" ></option>
+          <option value="3" label="Etats de produit" ></option>
+        </Select>
+      </div>
+    </div>
+    <div class="gallery-items">
+      <div class="product">
+        <div class="gallery-item">
+          <div class="date">
+            <i class="bi bi-lightbulb-fill icon "></i>
+            20-11-2024
+          </div>
+          <img src='https://th.bing.com/th/id/OIP.QZNKF9aSbVqNtO_BzwoPGAHaHa?rs=1&pid=ImgDetMain' alt=""
+            class="img-fluid" />
+          <a href="products/3" class="gallery-lightbox">
+            <div class="iconContainer">+</div>
+          </a>
+        </div>
+        <h1>Product Nom</h1>
+        <div class="location"><i class="bi bi-geo-fill"></i>Clermont Ferrand</div>
+        <div class="rating">
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+
+      </div>
+      <div class="product">
+        <div class="gallery-item">
+          <div class="date">
+            <i class="bi bi-lightbulb-fill icon "></i>
+            20-11-2024
+          </div>
+          <img src='https://th.bing.com/th/id/OIP.QZNKF9aSbVqNtO_BzwoPGAHaHa?rs=1&pid=ImgDetMain' alt=""
+            class="img-fluid" />
+          <a href="products/3" class="gallery-lightbox">
+            <div class="iconContainer">+</div>
+          </a>
+        </div>
+        <h1>Product Nom</h1>
+                <div class="location"><i class="bi bi-geo-fill"></i>Clermont Ferrand</div>
+        <div class="rating">
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+
+      </div>
+
+      <div class="product">
+        <div class="gallery-item">
+          <div class="date">
+            <i class="bi bi-lightbulb-fill icon "></i>
+            20-11-2024
+          </div>
+
+          <img
+            src='https://skelliggiftstore.com/cdn/shop/products/2_a4579573-5807-4311-a67f-3e50a5dfb711_2000x-removebg.jpg?v=1680101829'
+            alt="" class="img-fluid" />
+          <a href="products/1" class="gallery-lightbox">
+            <div class="iconContainer">+</div>
+          </a>
+        </div>
+        <h1>Product Nom</h1>
+                <div class="location"><i class="bi bi-geo-fill"></i>Clermont Ferrand</div>
+        <div class="rating">
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="gallery-item">
+          <div class="date">
+            <i class="bi bi-lightbulb-fill icon "></i>
+            20-11-2024
+          </div>
+
+          <img
+            src='https://th.bing.com/th/id/R.8559a8b5287292ffb70d555635d0ad8b?rik=vDyPEXW%2ftG7ASw&riu=http%3a%2f%2fshakemyblog.fr%2fwp-content%2fuploads%2f2018%2f11%2famenager-petit-bureau-2.jpg&ehk=rQyrBWQU6rRFURBD1vcJNgXwjhSg3WPMsBxVXrHn14s%3d&risl=&pid=ImgRaw&r=0'
+            alt="" class="img-fluid" />
+          <a href="products/2" class="gallery-lightbox">
+            <div class="iconContainer">+</div>
+          </a>
+        </div>
+        <h1>Product Nom</h1>
+                <div class="location"><i class="bi bi-geo-fill"></i>Clermont Ferrand</div>
+        <div class="rating">
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill active"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="/script/allProduct.js"></script>
+</body>
+
+</html>

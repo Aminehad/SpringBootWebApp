@@ -1,0 +1,58 @@
+body{
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+
+
+.edit-container  label {
+    margin-left: 5px;
+    color: #2d2d2d;
+}
+.edit-container  .input-container {
+    padding: 0;
+    margin-bottom: 15px;
+}
+.edit-container select{
+    font-size: 1rem;
+    font-weight: normal;
+    color: #2d2d2dAA;
+    background-color: #FFF;
+    height: 40px;
+    width: 90%;
+    outline: none;
+    padding:  10px;
+    border: 1px solid #00000044;
+    border-radius: 0.3rem;
+}
+
+.edit-container input , select.add{
+    font-size: 1rem;
+    font-weight: normal;
+    color: #000;
+    background-color: #FFF;
+    height: 40px;
+    width: 90%;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    border: 1px solid #00000044;
+    border-radius: 0.3rem;
+}
+
+.edit-container input.file {
+    border: none;
+    margin-left: 0;
+}
+
+.edit-container input:disabled {
+    color: #00000099;
+}
+.edit-container  .icon-input {
+    right: 0px;
+    top: 50%;
+}
