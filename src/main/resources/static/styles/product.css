@@ -1,0 +1,329 @@
+
+
+.details {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+
+  .details-img {
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    height: 550px;
+    border: 4px solid #fff;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+.details-right {
+    padding: 10px 30px;
+    width: 600px;
+
+  }
+
+  .details-left {
+
+    padding: 10px 30px;
+
+  }
+
+  .details-left .addAccessoire {
+    outline: none;
+    border: none;
+    background: none;
+    color: #51e2f5;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .details-left .addAccessoire:hover{
+    color: #1c99f9;
+  }
+
+  .details-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+    transition: all ease-in-out 0.4s;
+  }
+
+  .details-img img:hover {
+    transform: scale(1.2);
+  }
+  
+.rating {
+    margin-top: -10px;
+}
+  .rating h5 {
+    font-size: 16px;
+
+    color: #6c665c;
+    letter-spacing: 1.1;
+    font-weight: 500;
+  }
+  
+  .rating i {
+    color: #51e2f599;
+  }
+  .rating span {
+    margin-left: 5px;
+  }
+  
+
+  .details-info{
+  border-bottom: 1px solid #00000022;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  }
+
+  .details-info h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 10px;
+  }
+  .details-info p {
+    font-size: 0.8rem;
+    color: #000000bb;
+    letter-spacing: 1.1;
+
+    font-weight: 400;
+    line-height: 25px;
+  }
+
+  .details-info .price {
+    font-size: 1rem;
+    color: #1b1b1b;
+    font-weight: bold;
+  }
+
+  .details-info .date {
+    font-size: 0.8rem;
+    color: #1b1b1b;
+    font-weight: bold;
+  }
+
+  .details-info .colors {
+    display:  flex;
+    margin-top: 10px;
+  }
+  .details-info .colors .color{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 20px;
+    cursor: pointer;
+    border: 2px solid #00000077;
+    box-sizing: content-box;
+  }
+
+  .details-info .colors .tail{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 20px;
+    cursor: pointer;
+    border: 2px solid #00000077;
+    box-sizing: content-box;
+  }
+
+  .details-info .colors .active {
+    border: 3px solid #1c99f9;
+  }
+  
+  .details-info .colors .color .color-top {
+    width: 100%;
+    height: 50%;
+
+  }
+  .details-info .colors .color .color-bottom {
+    width: 100%;
+    height: 50%;
+
+  }
+
+  .details-info select:focus {
+    outline: none;
+    border: 2px solid #51e2f5;
+    box-shadow: none;
+  }
+
+ .buyButtoncontainer {
+    padding: 10px 0px;
+    border: 2px solid #51e2f5;
+    background-color: #FFF;
+    color: #51e2f5;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 2rem;
+  }
+.buyButtoncontainer:hover{
+    background-color: #51e2f5;
+    color: #fff;
+    cursor: pointer;
+  }
+.buyButtoncontainer:disabled {
+    background-color: #EEE;
+    border-color: #00000055;
+    color: #FFF;
+    cursor: not-allowed;
+  }
+  .details-right .reduction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 8px 10px;
+    max-width: 450px;
+    border-radius: 0.2rem;
+    background-color: #51e2f555;
+    color: #000;
+    font-size: 0.8rem;
+    letter-spacing: 1.1;
+    font-weight: 500;
+  }
+  
+
+  
+  @media (min-width: 1280px) {
+    .details {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        margin-top: 70px;
+        margin-bottom: 50px;
+    }
+    .details-img {
+        width: 400px;
+    }
+
+
+  }
+  @media (min-width: 1024px) and (max-width : 1280px) {
+    .details {
+        width: 95%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        margin-top: 70px;
+        margin-bottom: 50px;
+    }
+    .details-img {
+        width: 400px;
+    }
+  }
+  @media (min-width: 750px) and (max-width : 1024px) {
+    .details {
+        width: 95%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        margin-top: 70px;
+        margin-bottom: 50px;
+    }
+    .details-img {
+        width: 300px;
+        height: 450px;
+    }
+    
+
+  }
+
+  @media (max-width : 750px) {
+    .details{
+      margin-top: 70px;
+    }
+    .details-left {
+        padding: 10px 30px;
+    }
+    .details-right {
+        margin: auto;
+        width: 80%;
+    }
+    .details-info .buyButtoncontainer {
+      background-color: #FFF;
+        margin: auto;
+        margin-top: 15px;
+      }
+}
+@media (max-width : 600px) {
+  .details{
+    margin-top: 55px;
+    width: 100vw;
+    padding: 0 0;
+  }
+  .details-left {
+       
+        width: 100%;
+        justify-content: center;
+        padding: 0;
+    }
+    .details-left .addAccessoire {
+      padding: 10px;
+      font-size: 1.2rem;
+    }
+    .details-right {
+        margin: auto;
+        width: 100%;
+        padding: 10px 20px;
+    }
+    .details-img {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 450px;
+        border: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+      .details-img img {
+        border-radius: 0;
+      }
+      .details-info .buyButtoncontainer {
+        margin: auto;
+        margin-top: 15px;
+      }
+      
+    
+}
+
+ul.list-group {
+  overflow-y: scroll;
+}
+
+ul.list-group::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+
+ul.list-group::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+ul.list-group::-webkit-scrollbar-thumb {
+  background: #5f5950;
+  border-radius: 10px;
+}
+
+ul.list-group::-webkit-scrollbar-thumb:hover {
+  background: #1ecde4;
+}
+
+#accessoireContainer {
+  margin-top: 15px;
+}
+
+.view {
+  cursor: pointer;
+}
+.view.active {
+  color: #1ecde4;
+}
