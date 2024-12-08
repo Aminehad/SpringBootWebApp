@@ -37,6 +37,21 @@
     color: #21deff;
   }
 
+  .filters-container button {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 0.4rem;
+    border: 1px solid #21deff;
+    background-color: #21deff;
+    color: #FFF;
+  }
+
+  .filters-container button:hover{
+    background-color: #FFF;
+    color: #21deff;
+    cursor: pointer;
+  }
+
   .filters-container .filter{
     margin: 5px 0px;
     background-color: #FFF;

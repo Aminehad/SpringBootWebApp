@@ -63,7 +63,7 @@
     font-weight: 500;
   }
   
-  .rating i {
+  .rating i.active {
     color: #51e2f599;
   }
   .rating span {

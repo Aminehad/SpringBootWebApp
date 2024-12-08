@@ -82,12 +82,11 @@
   <div class="productsFound">220 Produits trouvés</div>
   <!-- ======= End filter Brands ======= -->
 
-  <div class="content">
-
-    <div class="filters-container">
+  <form class="content form-filter" action="/products" method="get">
+    <div  class="filters-container">
       <div class="title">
         <span>Filter</span>
-        <i class="bi bi-lightbulb-fill icon "></i>
+        <button type="submit">Appliqué</button>
       </div>
       <div class="filter">
         <div class="label">
@@ -95,12 +94,12 @@
           <i class="bi bi-list-task icon"></i>
         </div>
         <div class="value">
-          <Select placeholder="PS4, Vétements, Enfants ..." type="text">
-            <option value="" label="non-selection"  ></option>
-            <option value="Table" label="Table"  ></option>
-            <option value="Vetments" label="Vetments"  ></option>
-            <option value="Jeu" label="Jeu"  ></option>
-            <option value="Autre" label="Autre"  ></option>
+          <Select name="category" placeholder="PS4, Vétements, Enfants ..." type="text">
+            <option value="" label="Tous"></option>
+            <th:block th:each="item : ${categories}">
+             <option th:selected="${selectedCategory == item.id}" th:value="${item.id}" th:label="${item.name}"></option>
+            </th:block>
+
           </Select>
         </div>
       </div>
@@ -110,7 +109,7 @@
           <i class="bi bi-skip-start-circle icon"></i>
         </div>
         <div class="value">
-          <input  type="date">
+          <input th:value="${startDate}" name="startDate" type="date">
         </div>
       </div>
       <div class="filter">
@@ -119,7 +118,7 @@
           <i class="bi  bi-skip-end-circle icon"></i>
         </div>
         <div class="value">
-          <input  type="date">
+          <input th:value="${endDate}" name="endDate" type="date">
         </div>
       </div>
       <div class="filter">
@@ -128,7 +127,7 @@
           <i class="bi bi-geo-fill icon"></i>
         </div>
         <div class="value">
-          <input placeholder="Clermont-Ferrand ..." type="text">
+          <input th:value="${location}" name="location" placeholder="Clermont-Ferrand ..." type="text">
         </div>
       </div>
       <div class="filter">
@@ -137,10 +136,10 @@
           <i class="bi bi-badge-8k-fill icon"></i>
         </div>
         <div class="value">
-          <Select >
-            <option value="0" label="non-selection"  ></option>
-            <option value="1" label="A Main"  ></option>
-            <option value="2" label="Livraison"  ></option>
+          <Select name="delivery" >
+            <option  value="" label="Tous"></option>
+            <option th:selected="${delivery == 'A_MAIN'}" value="A_MAIN" label="A Main"></option>
+            <option th:selected="${delivery == 'LIVRAISON'}" value="LIVRAISON" label="Livraison"></option>
           </Select>
         </div>
       </div>
@@ -150,7 +149,7 @@
           <i class="bi bi-key-fill icon"></i>
         </div>
         <div class="value">
-          <input placeholder="PS4, Vétements, Enfants ..." type="text">
+          <input  th:value="${keywords}" name="keywords" placeholder="PS4, Vétements, Enfants ..." type="text">
         </div>
       </div>
       <div class="filter">
@@ -159,136 +158,83 @@
           <i class="bi bi-badge-8k-fill icon"></i>
         </div>
         <div class="value">
-          <Select placeholder="PS4, Vétements, Enfants ..." type="text">
-            <option value="" label="non-selection"  ></option>
-            <option value="1" label="1"  ></option>
-            <option value="2" label="2"  ></option>
-            <option value="3" label="3"  ></option>
-            <option value="4" label="4"  ></option>
-            <option value="5" label="5"  ></option>
+          <Select name="status" placeholder="PS4, Vétements, Enfants ..." type="text">
+            <option   label="non-selection"></option>
+            <option th:selected="${status == 'DEFECTUEUX'}" value="DEFECTUEUX" label="Defectueux"></option>
+            <option th:selected="${status == 'USE'}" value="USE" label="Use"></option>
+            <option th:selected="${status == 'ACCEPTABLE'}" value="ACCEPTABLE" label="Acceptable"></option>
+            <option th:selected="${status == 'BON'}" value="BON" label="Bon"></option>
+            <option th:selected="${status == 'NEUF'}" value="NEUF" label="Neuf"></option>
           </Select>
         </div>
       </div>
     </div>
 
-  <div class="gallery">
-    <div class="sort-container">
-      <div class="sort-icons">
-        <div class="sort-icon active"><i class="bi bi-sort-down"></i></div>
-        <div class="sort-icon"><i class="bi bi-sort-up-alt"></i></div>
+    <div class="gallery">
+      <div class="sort-container" >
+        <div class="sort-icons">
+          <div th:classappend="${orderDirection != 'DESC'  ? 'active' : ''}" class="sort-icon sort-icon-1 "><i class="bi bi-sort-up-alt" ></i></div>
+          <div th:classappend="${orderDirection == 'DESC'  ? 'active' : ''}" class="sort-icon sort-icon-2"><i class="bi bi-sort-down" ></i></div>
+          <input class="orderDirection" name="orderDirection" th:value="${orderDirection == 'DESC' ? 'DESC' : 'ASC'}" type="hidden">
+        </div>
+        <div class="sort-value">
+          <Select class="orderBy" name="orderBy" title="Trier">
+            <option th:selected="${orderBy == 0 || orderBy == null}" value="0" label="Trier" disabled></option>
+            <option th:selected="${orderBy == 1}" value="1" label="Date de début"></option>
+            <option th:selected="${orderBy == 2}" value="2" label="Location"></option>
+            <option th:selected="${orderBy == 3}" value="3" label="Etats de produit"></option>
+          </Select>
+        </div>
       </div>
-      <div class="sort-value">
-        <Select  title="Trier">
-          <option value="0" label="Trier" selected disabled ></option>
-          <option value="1" label="Date de début" ></option>
-          <option value="2" label="Date de fin" ></option>
-          <option value="3" label="Etats de produit" ></option>
-        </Select>
+      <div class="gallery-items">
+        <th:block th:each="item : ${products}">
+          <div class="product">
+            <div class="gallery-item">
+              <div class="date">
+                <i class="bi bi-lightbulb-fill icon "></i>
+                <span th:text="${item.createdAt}"></span>
+              </div>
+              <img th:src="${item.picture}"  alt="" class="img-fluid" />
+              <a th:href="'/products/' + ${item.id}" class="gallery-lightbox">
+                <div class="iconContainer">+</div>
+              </a>
+            </div>
+            <h1 th:text="${item.title}"></h1>
+            <div class="location"><i class="bi bi-geo-fill"></i><span th:text="${item.location}"></span></div>
+            <div class="rating">
+              <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 0 ? 'active' : ''}"></i>
+              <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 1 ? 'active' : ''}"></i>
+              <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 2 ? 'active' : ''}"></i>
+              <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 3 ? 'active' : ''}"></i>
+              <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 4 ? 'active' : ''}"></i>
+            </div>
+          </div>
+        </th:block>
+    
       </div>
     </div>
-    <div class="gallery-items">
-      <div class="product">
-        <div class="gallery-item">
-          <div class="date">
-            <i class="bi bi-lightbulb-fill icon "></i>
-            20-11-2024
-          </div>
-          <img src='https://th.bing.com/th/id/OIP.QZNKF9aSbVqNtO_BzwoPGAHaHa?rs=1&pid=ImgDetMain' alt=""
-            class="img-fluid" />
-          <a href="products/3" class="gallery-lightbox">
-            <div class="iconContainer">+</div>
-          </a>
-        </div>
-        <h1>Product Nom</h1>
-        <div class="location"><i class="bi bi-geo-fill"></i>Clermont Ferrand</div>
-        <div class="rating">
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill"></i>
-        </div>
-
-      </div>
-      <div class="product">
-        <div class="gallery-item">
-          <div class="date">
-            <i class="bi bi-lightbulb-fill icon "></i>
-            20-11-2024
-          </div>
-          <img src='https://th.bing.com/th/id/OIP.QZNKF9aSbVqNtO_BzwoPGAHaHa?rs=1&pid=ImgDetMain' alt=""
-            class="img-fluid" />
-          <a href="products/3" class="gallery-lightbox">
-            <div class="iconContainer">+</div>
-          </a>
-        </div>
-        <h1>Product Nom</h1>
-                <div class="location"><i class="bi bi-geo-fill"></i>Clermont Ferrand</div>
-        <div class="rating">
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill"></i>
-        </div>
-
-      </div>
-
-      <div class="product">
-        <div class="gallery-item">
-          <div class="date">
-            <i class="bi bi-lightbulb-fill icon "></i>
-            20-11-2024
-          </div>
-
-          <img
-            src='https://skelliggiftstore.com/cdn/shop/products/2_a4579573-5807-4311-a67f-3e50a5dfb711_2000x-removebg.jpg?v=1680101829'
-            alt="" class="img-fluid" />
-          <a href="products/1" class="gallery-lightbox">
-            <div class="iconContainer">+</div>
-          </a>
-        </div>
-        <h1>Product Nom</h1>
-                <div class="location"><i class="bi bi-geo-fill"></i>Clermont Ferrand</div>
-        <div class="rating">
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill"></i>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="gallery-item">
-          <div class="date">
-            <i class="bi bi-lightbulb-fill icon "></i>
-            20-11-2024
-          </div>
-
-          <img
-            src='https://th.bing.com/th/id/R.8559a8b5287292ffb70d555635d0ad8b?rik=vDyPEXW%2ftG7ASw&riu=http%3a%2f%2fshakemyblog.fr%2fwp-content%2fuploads%2f2018%2f11%2famenager-petit-bureau-2.jpg&ehk=rQyrBWQU6rRFURBD1vcJNgXwjhSg3WPMsBxVXrHn14s%3d&risl=&pid=ImgRaw&r=0'
-            alt="" class="img-fluid" />
-          <a href="products/2" class="gallery-lightbox">
-            <div class="iconContainer">+</div>
-          </a>
-        </div>
-        <h1>Product Nom</h1>
-                <div class="location"><i class="bi bi-geo-fill"></i>Clermont Ferrand</div>
-        <div class="rating">
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill active"></i>
-          <i class="bi bi-star-fill"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
+  </form>
 
 
+  <script>
+    document.querySelector(".sort-icon-1").addEventListener("click",() => {
+      document.querySelector(".orderDirection").value = "ASC"
+      document.querySelector(".sort-icon-1").classList.add("active")
+      document.querySelector(".sort-icon-2").classList.remove("active")
+      document.querySelector(".form-filter").submit()
+    })
 
+    document.querySelector(".sort-icon-2").addEventListener("click",() => {
+      document.querySelector(".orderDirection").value = "DESC"
+      document.querySelector(".sort-icon-2").classList.add("active")
+      document.querySelector(".sort-icon-1").classList.remove("active")
+      document.querySelector(".form-filter").submit()
+    })
+
+    document.querySelector(".orderBy").addEventListener("change",() => {
+      document.querySelector(".form-filter").submit()
+    })
+  </script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>

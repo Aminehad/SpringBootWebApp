@@ -77,34 +77,30 @@
                                 <i style="color: #FFF;font-size : 36px" class="bi  bi-heart-fill"></i>
                             </a>    
                         </div>
-                    <img class="product-img" src="https://preview.redd.it/zfohxnf8t3pa1.jpg?width=1024&format=pjpg&auto=webp&v=enabled&s=0f660e0a56476991ee3b97f2885d8c010fec5b97"/>
+                    <img class="product-img" th:src="${product.picture}"/>
                 </div>              
             </div>
             <form  method="post" class=" details-right">
                 <div class="details-info">
-                    <h1>
-                        Product Nom
+                    <h1 th:text="${product.title}" >
                     </h1>
-                    <p>Descr : Fnd Top Designers & Creative Professionals on Dribbble. We are where designers gain inspiration,
-                      feedback, community, and jobs. Your best resource to discover and connect with A lot of many mots clé geograpgique etats et tous ca  …</p>
+                    <p th:text="${product.description}" ></p>
                     <div class="rating">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <span >Neuf</span>
+                        <i class="bi bi-star-fill " th:classappend="${product.status.ordinal() >= 0 ? 'active' : ''}"></i>
+                        <i class="bi bi-star-fill " th:classappend="${product.status.ordinal() >= 1 ? 'active' : ''}"></i>
+                        <i class="bi bi-star-fill " th:classappend="${product.status.ordinal() >= 2 ? 'active' : ''}"></i>
+                        <i class="bi bi-star-fill " th:classappend="${product.status.ordinal() >= 3 ? 'active' : ''}"></i>
+                        <i class="bi bi-star-fill " th:classappend="${product.status.ordinal() >= 4 ? 'active' : ''}"></i>
                     </div>
                 </div>
                 <div class="details-info">
                       <div class="price" style="display: flex;justify-content: space-between;">
-                        <span><i class="bi bi-geo-fill"></i></i> Zone géographique</span>
-                       <span class="date" ><i class="bi bi-calendar4"></i></i> 20-11-2024</span>
+                        <span><i class="bi bi-geo-fill"></i></i><span th:text="${product.location}"></span></span>
+                       <span class="date" ><i class="bi bi-calendar4"></i></i> <span th:text="${product.createdAt}" ></span></span>
                     </div>
 
                     <div class="reduction">
-                        <div>
-                          Mots, Dev, IA, Reseau, Machin Learning, Analyse Statique, Analyse Dynamique, web, mobile, devOps, Microservice, Architecture
+                        <div th:text="${product.keyWords}" >  
                         </div>
                         <i class="bi bi-lightbulb-fill"></i>
                     </div>
@@ -147,8 +143,6 @@
     <!-- ======= End trending Brands ======= -->
     <!-- ======= Footer ======= -->
     <!-- ======= End Footer ======= -->
-
-
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
