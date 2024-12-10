@@ -32,3 +32,14 @@ CREATE TABLE item (
     FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE SET NULL,
     FOREIGN KEY (user_id) REFERENCES app_user(id) ON DELETE CASCADE
 );
+
+
+CREATE TABLE user_favorites (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY, -- Optional: unique ID for the relationship
+    user_id BIGINT NOT NULL, -- Links to app_user
+    item_id BIGINT NOT NULL, -- Links to item
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp of when the favorite was created
+    FOREIGN KEY (user_id) REFERENCES app_user(id) ON DELETE CASCADE, -- Deletes all favorites if the user is deleted
+    FOREIGN KEY (item_id) REFERENCES item(id) ON DELETE CASCADE, -- Deletes all favorites if the item is deleted
+    UNIQUE (user_id, item_id) -- Ensures a user can't favorite the same item multiple times
+);
