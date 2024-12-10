@@ -1,6 +1,8 @@
 package com.example.DonationManager.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,7 +10,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Column;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.example.DonationManager.model.enumeration.*;
+
+
 
 @Entity
 public class Item {
@@ -19,6 +27,19 @@ public class Item {
 
     private String title;
     private String description;
+    private String location;
+    private String keyWords;
+    private String picture;
+
+
+    @Enumerated(EnumType.STRING) 
+    @Column(nullable = false)
+    private ProductStatus status;
+
+    @Enumerated(EnumType.STRING) 
+    @Column(nullable = false)
+    private ProductDelivery delivery;
+ 
 
     @ManyToOne
     @JoinColumn(name = "category_id")  
@@ -27,10 +48,11 @@ public class Item {
     private String condition;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    @DateTimeFormat(pattern = "dd-MM-yyy")
+    private Date createdAt;
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private Date updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")  
@@ -52,6 +74,22 @@ public class Item {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getKeyWords() {
+        return keyWords;
+    }
+
+    public void setKeyWords(String keywords) {
+        this.keyWords = keywords;
     }
 
     public String getDescription() {
@@ -78,19 +116,19 @@ public class Item {
         this.condition = condition;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -100,5 +138,29 @@ public class Item {
 
     public void setUser(AppUser user) {
         this.user = user;
+    }
+
+    public ProductStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ProductStatus status) {
+        this.status = status;
+    }
+
+    public ProductDelivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(ProductDelivery delivery) {
+        this.delivery = delivery;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
