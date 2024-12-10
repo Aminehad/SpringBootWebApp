@@ -55,145 +55,136 @@
     <div id="viewport">
 
       <!-- Content -->
-      <div id="content">
-        <nav class="navbar navbar-default">
-          
-        </nav>
-        <div class="container-fluid">
-          <div class="gallery">
-            <div class="gallery-items">       
-              <div  class="product">
-                <div class="gallery-item">
-                  <div class="date">
-                      <i class="bi bi-lightbulb-fill icon "></i>
-                      20-11-2024
-                  </div>
-                    <img
-                      src='https://th.bing.com/th/id/OIP.BgXnekxQ3AVWwgOuTTEaRgHaNL?pid=ImgDet&w=187&h=333&c=7&dpr=1,1' 
-                      alt=""
-                      class="img-fluid"
-                    />      
-                    <a href="products/3" class="gallery-lightbox">  <div class="iconContainer"><i class="bi bi-pencil-square"></i></div> </a>
-                </div>
-                <h1>Product Nom</h1>
-                <h2><i class="bi bi-geo-fill"></i>Clermont Ferrand</h2>
-                <div class="rating">
-                  <i class="bi bi-star-fill active"></i>
-                  <i class="bi bi-star-fill active"></i>
-                  <i class="bi bi-star-fill active"></i>
-                  <i class="bi bi-star-fill active"></i>
-                  <i class="bi bi-star-fill"></i>
-              </div>
+        <nav class="navbar navbar-expand-lg navbar-light ">
+          <a class="navbar-brand" href="/">
+            <img src="/pictures/logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
       
-              </div>
-      
-              <div  class="product">
-                  <div class="gallery-item">
-                      <div class="date">
-                          <i class="bi bi-lightbulb-fill icon "></i>
-                          20-11-2024
-                      </div>
-                
-                      <img
-                        src='https://preview.redd.it/zfohxnf8t3pa1.jpg?width=1024&format=pjpg&auto=webp&v=enabled&s=0f660e0a56476991ee3b97f2885d8c010fec5b97' 
-                        alt=""
-                        class="img-fluid"
-                      />      
-                      <a href="products/1" class="gallery-lightbox">  <div class="iconContainer"><i class="bi bi-pencil-square"></i></div> </a>
-                  </div>
-                  <h1>Product Nom</h1>
-                  <h2><i class="bi bi-geo-fill"></i>Clermont Ferrand</h2>
-                  <div class="rating">
-                      <i class="bi bi-star-fill active"></i>
-                      <i class="bi bi-star-fill active"></i>
-                      <i class="bi bi-star-fill active"></i>
-                      <i class="bi bi-star-fill active"></i>
-                      <i class="bi bi-star-fill"></i>
-                  </div>
-                </div>
-      
-                <div  class="product">
-                  <div class="gallery-item">
-                      <div class="date">
-                          <i class="bi bi-lightbulb-fill icon "></i>
-                          20-11-2024
-                      </div>
-                
-                      <img
-                        src='https://th.bing.com/th/id/R.8559a8b5287292ffb70d555635d0ad8b?rik=vDyPEXW%2ftG7ASw&riu=http%3a%2f%2fshakemyblog.fr%2fwp-content%2fuploads%2f2018%2f11%2famenager-petit-bureau-2.jpg&ehk=rQyrBWQU6rRFURBD1vcJNgXwjhSg3WPMsBxVXrHn14s%3d&risl=&pid=ImgRaw&r=0' 
-                        alt=""
-                        class="img-fluid"
-                      />      
-                      <a href="products/2" class="gallery-lightbox">  <div class="iconContainer"><i class="bi bi-pencil-square"></i></div> </a>
-                  </div>
-                  <h1>Product Nom</h1>
-                  <h2><i class="bi bi-geo-fill"></i>Clermont Ferrand</h2>
-                  <div class="rating">
-                      <i class="bi bi-star-fill active"></i>
-                      <i class="bi bi-star-fill active"></i>
-                      <i class="bi bi-star-fill active"></i>
-                      <i class="bi bi-star-fill active"></i>
-                      <i class="bi bi-star-fill"></i>
-                  </div>
-                </div>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" href="">L'atelier de les aides <span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+            <div class="form-inline left-nav my-2 my-lg-0">
+              <img src="https://th.bing.com/th/id/OIP.HDBCTcLzA9xlG5xrkygkuwHaE7?rs=1&pid=ImgDetMain" alt="">
+              <span >Cr. ronaldo</span>
             </div>
           </div>
-      
-        </div>
-      </div>
-    </div>
+        </nav>
 
-     <!-- Modal -->
-     <div class="modal modal-xl  fade" id="product-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Edit Produit</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form action="/gerant/produits" method="post"  >
-          <div class="modal-body edit-container" >
-              <input type="hidden" name="id" />
-              <div class="input-container">
-                  <label>Produit : </label>
-                  <input  value=""   class="info" type="text" name="name" placeholder="Name">
-                  
-              </div>  
-              <div class="input-container">
-                <label>Descrp : </label>
-                <input  value=""   class="info" type="text" name="descr" placeholder="Description">
-                
-              </div>  
-              <div class="input-container">
-                <label>Type : </label>
-                <input  value=""   class="info" type="text" name="type" placeholder="Type">
-                
-              </div>  
-              <div class="input-container">
-                <label>Marque : </label>
-                <input  value=""   class="info" type="text" name="mark" placeholder="Marque">
-                
-              </div>  
-              <div class="input-container">
-                <label>Style : </label>
-                <input  value=""   class="info" type="text" name="style" placeholder="Style">
-                
-              </div>  
-              <div class="input-container">
-                <label>Prix : </label>
-                <input  value=""   class="info" type="text" name="price" placeholder="Prix">
+        <div class="content">
+          <div class="products-container">
+            <div class="header">
+              <div class="add-product-container">
+                <i class="bi bi-bag-plus-fill icon"></i>
+                <div class="add-product-text">Un simple geste de gentillesse peut illuminer la journée de quelqu'un. Let's help each other 😊</div>
+                <div data-toggle="modal" data-target="#add-product-modal" class="add-product">Ajouter Produit</div>
+              </div>
+              <div class="info-product-container">
+                <i class="bi bi-diagram-3 icon"></i>
+                <div class="info-product-text">Vous avez aider les autres avec <span th:text="${products.size()}" ></span> produit . Merci pour tous vous aides 😊</div>
                 
               </div>
-        </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-secondary ">Sauvgarder</button>
+            </div>
+
+
+            <div class="categories">
+              <a  th:href="'/user/'+ ${user.id}"><div class="category" th:classappend="${category != 1 && category != 2 ? 'active' : ''}" >Crée</div></a>
+              <a  th:href="'/user/'+ ${user.id} + '?category=1'" ><div class="category" th:classappend="${category == 1 ? 'active' : ''}">Favorisés</div></a>
+              <a  th:href="'/user/'+ ${user.id} + '?category=2'" ><div class="category" th:classappend="${category == 2 ? 'active' : ''}">Prisés</div></a>
+            </div>
+        
+            <div class="gallery gallery-user">
+            <div class="gallery-items">
+
+              <div th:if="${products.size() == 0}">
+                <p>Non Produits pour le moment :)</p>
+            </div>
+
+              <th:block th:each="item : ${products}">
+
+                <div class="product">
+                       <!-- Modal -->
+                        <div class="modal  fade" th:id="'product-modal-edit-' + ${item.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered " role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Vous Voulez supprimer le Produit ?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <form th:action="'/products/' + ${item.id} + '/delete'" method="get"  >  
+                              <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary modal-submit ">Supprimer</button>
+                              </div>
+                            </form>
+                            </div>
+                          </div>
+                        </div>
+                  <div class="gallery-item">
+                    <div class="date">
+                      <i class="bi bi-lightbulb-fill icon "></i>
+                      <span th:text="${item.createdAt}"></span>
+                    </div>
+                    <a th:href="'/products/' + ${item.id}"><img th:src="${item.picture}"  alt="" class="img-fluid" /></a>
+                    
+                    <a  class="gallery-lightbox">
+                      <div data-toggle="modal" th:data-target="'#product-modal-edit-' + ${item.id}" class="iconContainer trash"><i class="bi bi-trash2"></i></div>
+                    </a>
+                  </div>
+                  <h1 th:text="${item.title}"></h1>
+                  <div class="location"><i class="bi bi-geo-fill"></i><span th:text="${item.location}"></span></div>
+                  <div class="rating">
+                    <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 0 ? 'active' : ''}"></i>
+                    <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 1 ? 'active' : ''}"></i>
+                    <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 2 ? 'active' : ''}"></i>
+                    <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 3 ? 'active' : ''}"></i>
+                    <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 4 ? 'active' : ''}"></i>
+                  </div>
+                </div>
+              </th:block>
+          
+            </div>
           </div>
-        </form>
+
+          </div>
+          <div class="profile-container">
+            <div class="picture-container">
+              <img src="https://th.bing.com/th/id/OIP.HDBCTcLzA9xlG5xrkygkuwHaE7?rs=1&pid=ImgDetMai" alt="">
+              <div class="change-picture">Changer</div>
+            </div>
+            <div class="info">
+              <label class="label" >Nom de profile</label>
+              <input type="text" class="value" th:value="${user.name}" >
+            </div>
+            <div class="info">
+              <label class="label" >Email</label>
+              <input type="text" class="value" th:value="${user.email}" >
+            </div>
+            <div class="info">
+              <label class="label" >Numero de téléphone</label>
+              <input type="text" class="value" th:value="${user.phone}" >
+            </div>
+            <div class="info">
+              <label class="label" >Address</label>
+              <input type="text" class="value" th:value="${user.address}" >
+            </div>
+
+            <div class="save-profile">Sauvgarder</div>
+
+            <div class="password"> vous vouler changer votre mot de passe !</div>
+          </div>
         </div>
-      </div>
+        
     </div>
+
+
 
 
          <!-- Modal -->
@@ -206,7 +197,8 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <form action="/gerant/produit" method="post"  enctype="multipart/form-data"  >
+              <form action="/products" method="post"  enctype="multipart/form-data"  >
+                <input required  th:value="${user.id}"   class="info" type="hidden" name="userId" placeholder="Nom">
               <div class="modal-body edit-container" >
                 <div class="input-container">
                   <label>Photo : </label>
@@ -220,11 +212,11 @@
                 </div>
                   <div class="input-container">
                       <label>Nom de Produit : </label>
-                      <input required  value=""   class="info" type="text" name="name" placeholder="Nom">
+                      <input required  value=""   class="info" type="text" name="title" placeholder="Nom">
                   </div>  
                   <div class="input-container">
                     <label>Descreption : </label>
-                    <input required value=""   class="info" type="text" name="descr" placeholder="Description">
+                    <input required value=""   class="info" type="text" name="description" placeholder="Description ...">
                   </div> 
                   <div class="input-container">
                     <label>Categorie : </label>
@@ -232,18 +224,14 @@
                     value=""
                     class="info"
                     type="text"
-                    name="type"
+                    name="categoryId"
                     placeholder="Type"
                     required
                   >
                     <option  selected disabled value="S">Type</option>
-                    <option value="pantalons">pantalons</option>
-                    <option value="vest">vest</option>
-                    <option value="pull"> pull</option>
-                    <option value="chemise">chemise</option>
-                    <option value="short">short</option>
-                    <option value="chaussette">chaussette</option>
-                    <option value="autre">autre</option>
+                    <th:block th:each="item : ${categories}">
+                      <option  th:value="${item.id}" th:label="${item.name}"></option>
+                  </th:block>
                   </select>
                     
                   </div>  
@@ -253,30 +241,38 @@
                     value=""
                     class="info"
                     type="text"
-                    name="type"
+                    name="status"
                     placeholder="Type"
                     required
                   >
                     <option  selected disabled value="S">Qualité</option>
-                    <option value="pantalons">1</option>
-                    <option value="vest">2</option>
-                    <option value="pull"> 3</option>
-                    <option value="chemise">4</option>
-                    <option value="short">5</option>
+                    <option  value="DEFECTUEUX" label="Defectueux"></option>
+                    <option  value="USE" label="Use"></option>
+                    <option  value="ACCEPTABLE" label="Acceptable"></option>
+                    <option  value="BON" label="Bon"></option>
+                    <option  value="NEUF" label="Neuf"></option>
                   </select>
                     
                   </div>  
                   <div class="input-container">
                     <label>Location : </label>
-                    <input required value=""   class="info" type="text" name="location" placeholder="Location">                
+                    <input required value=""   class="info" type="text" name="location" placeholder="Clermont-F, France ....">                
                   </div>
                   <div class="input-container">
-                    <label>Tags : </label>
-                    <input required value=""   class="info" type="text" name="Tags" placeholder="Tags">                
+                    <label>Mots clés : </label>
+                    <input required value=""   class="info" type="text" name="keywords" placeholder="Tags">                
                   </div>
+                  <div class="input-container">
+                    <label>Livraison : </label>
+                    <Select name="delivery" >
+                      <option  value="TOUS" label="Tous"></option>
+                      <option  value="A_MAIN" label="A Main"></option>
+                      <option  value="LIVRAISON" label="Livraison"></option>
+                    </Select> 
+                  </div> 
             </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-secondary ">Ajouter</button>
+                <button type="submit" class="btn btn-secondary modal-submit ">Ajouter</button>
               </div>
             </form>
             </div>

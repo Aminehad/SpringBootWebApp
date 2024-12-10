@@ -72,4 +72,8 @@ default List<Item> findByFilterWithOrdering(Long categoryId, LocalDate startDate
 
        return findByFilter(categoryId, startDate, endDate, location, delivery, keywords, status,sort);
        }
+
+
+   @Query("SELECT i FROM Item i WHERE i.user.id = :userId")
+   List<Item> findByUserId(@Param("userId") Long userId);
 }

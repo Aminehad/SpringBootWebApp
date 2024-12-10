@@ -8,9 +8,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Column;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -57,6 +60,9 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "user_id")  
     private AppUser user;
+
+    @ManyToMany(mappedBy = "favoriteItems")
+    private Set<AppUser> favoritedByUsers = new HashSet<>();
 
     // Getters and Setters
 
@@ -162,5 +168,14 @@ public class Item {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+
+    public Set<AppUser> getFavoritedByUsers() {
+        return favoritedByUsers;
+    }
+
+    public void setFavoritedByUsers(Set<AppUser> favoritedByUsers) {
+        this.favoritedByUsers = favoritedByUsers;
     }
 }
