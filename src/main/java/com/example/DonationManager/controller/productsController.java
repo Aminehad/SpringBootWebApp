@@ -6,10 +6,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,8 +58,16 @@ public class productsController {
             @RequestParam(name = "status", required = false) String status,
             @RequestParam(name = "orderDirection", required = false) String orderDirection,
             @RequestParam(name = "orderBy", required = false) Integer orderBy,
-            Model model) {
+            Model model, Principal principal) {
 
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                if (authentication != null && authentication.isAuthenticated() &&
+                    !(authentication instanceof org.springframework.security.authentication.AnonymousAuthenticationToken)) {
+                    String userName = authentication.getName();
+                    model.addAttribute("userName", userName);
+                } else {
+                    model.addAttribute("userName", "Guest");
+                }
                 
         ProductDelivery productDelivery = null;
         ProductStatus productStatus = null;

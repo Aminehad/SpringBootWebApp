@@ -43,7 +43,8 @@
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <a class="login" href="/login">Login</a>
+        <li th:if="${userName != null}" th:text="'Hello, ' + ${userName}"></li>
+        <li th:if="${userName == null}"><a href="/login">Login</a></li>
       </div>
     </div>
   </nav>
@@ -65,8 +66,8 @@
                   Un simple geste de gentillesse peut illuminer la journée de quelqu'un. Let's help each other😊
                 </p>
                 <div>
-                  <a href="" class="btn-menu animate__animated animate__fadeInUp scrollto">Login</a>
-                  <a href="" class="btn-book animate__animated animate__fadeInUp scrollto">Register</a>
+                  <a href="/login" class="btn-menu animate__animated animate__fadeInUp scrollto">Login</a>
+                  <a href="/register" class="btn-book animate__animated animate__fadeInUp scrollto">Register</a>
                 </div>
               </div>
             </div>
