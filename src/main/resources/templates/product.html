@@ -80,10 +80,11 @@
                     <img class="product-img" th:src="${product.picture}"/>
                 </div>              
             </div>
-            <form  method="post" class=" details-right">
+            <form  method="post" action="/cart/add" class=" details-right">
                 <div class="details-info">
                     <h1 th:text="${product.title}" >
                     </h1>
+                    <input type="hidden" name="productId" th:value="${product.id}" />
                     <p th:text="${product.description}" ></p>
                     <div class="rating">
                         <i class="bi bi-star-fill " th:classappend="${product.status.ordinal() >= 0 ? 'active' : ''}"></i>

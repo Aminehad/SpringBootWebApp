@@ -1,10 +1,6 @@
 package com.example.DonationManager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,9 +28,13 @@ public class AuthController {
 
     @PostMapping("/register")
     public String processRegistration(@ModelAttribute AppUser user, Model model) {
+        if (userService.findByEmail(user.getEmail()).isPresent()) {
+            model.addAttribute("message", "User with this email already exists!");
+            return "register";
+        }
         AppUser savedUser = userService.saveUser(user);
             model.addAttribute("message", "User " + savedUser.getName() + " registered successfully!");
-            return "redirect:/login";  // Redirect to products page after successful registration
+            return "redirect:/login";  
        
     }
 
