@@ -36,6 +36,7 @@ public class UserService implements UserDetailsService {
         // Save the user to the database
         return userRepository.save(user);
     }
+
     public Optional<AppUser> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
