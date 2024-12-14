@@ -43,8 +43,11 @@
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <li th:if="${userName != null}" th:text="'Hello, ' + ${userName}"></li>
-        <li th:if="${userName == null}"><a href="/login">Login</a></li>
+        <li th:if="${userName != null && userName != 'Guest'}">
+          <a th:href="@{/user/{userId}(userId=${userId})}" th:text="${userName}"></a>
+          <a href="/logout">Logout</a>
+        </li>
+        <li th:if="${userName == 'Guest'}"><a href="/login">Login</a></li>
       </div>
     </div>
   </nav>

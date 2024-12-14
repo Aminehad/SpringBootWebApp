@@ -3,24 +3,20 @@ package com.example.DonationManager.controller;
 import java.io.File;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.DonationManager.model.Category;
 import com.example.DonationManager.model.Item;
@@ -30,6 +26,7 @@ import com.example.DonationManager.repository.CategoryRepository;
 import com.example.DonationManager.repository.ProductRepository;
 import com.example.DonationManager.repository.UserRepository;
 import com.example.services.ProductService;
+import com.example.DonationManager.model.AppUser;
 
 import org.springframework.ui.Model;
 
@@ -65,6 +62,9 @@ public class productsController {
                     !(authentication instanceof org.springframework.security.authentication.AnonymousAuthenticationToken)) {
                     String userName = authentication.getName();
                     model.addAttribute("userName", userName);
+                    Optional<AppUser> userDetailsOptional = userRepository.findByEmail(userName);
+                    AppUser userDetails = userDetailsOptional.orElse(null);
+                    model.addAttribute("userId", userDetails.getId());
                 } else {
                     model.addAttribute("userName", "Guest");
                 }
