@@ -96,6 +96,23 @@ body{
   #navbar Section
   --------------------------------------------------------------*/
   
+  
+  .infoUser {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+
+
+  .userName, .logOut , .login {
+    color: #2d2d2d;
+    list-style: none;
+  }
+
+  .userName:hover, .logOut:hover , .login:hover{
+    color: #3792e8;
+  }
+
   nav {
     position: sticky;
     top: 0;
@@ -627,6 +644,12 @@ a {
   bottom: 20px;
   right: 20px;
   cursor: pointer;
+}
+
+.gallery .gallery-item .iconContainer .icon {
+  font-size: 14px;
+  margin-top: 4px;
+  font-weight: bold;
 }
 
 .gallery .gallery-item .iconContainer.trash {

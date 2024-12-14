@@ -56,6 +56,13 @@
     margin-top: 30px;
 
   }
+  .login .container .messageSuccess {
+    color: rgb(60, 240, 114);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 30px;
+
+  }
   
   .clearfix::after {
     content: "";

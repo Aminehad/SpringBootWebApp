@@ -43,11 +43,12 @@
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <li th:if="${userName != null && userName != 'Guest'}">
-          <a th:href="@{/user/{userId}(userId=${userId})}" th:text="${userName}"></a>
-          <a href="/logout">Logout</a>
+        <li class="infoUser" th:if="${userName != null && userName != 'Guest'}">
+          <a class="userName" th:href="@{/user/{userId}(userId=${userId})}" th:text="${userName}"></a>
+          <a class="userName" href="">|</a>
+          <a class="logOut" href="/logout">Logout</a>
         </li>
-        <li th:if="${userName == 'Guest'}"><a href="/login">Login</a></li>
+        <li class="login" th:if="${userName == 'Guest'}"><a class="login" href="/login">Login</a></li>
       </div>
     </div>
   </nav>
@@ -87,6 +88,7 @@
   <!-- ======= End filter Brands ======= -->
 
   <form class="content form-filter" action="/products" method="get">
+    <input type="hidden" name="isFilter" value="true">
     <div  class="filters-container">
       <div class="title">
         <span>Filter</span>

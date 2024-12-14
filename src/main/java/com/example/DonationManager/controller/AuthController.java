@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
 import com.example.DonationManager.model.AppUser;
@@ -15,7 +16,21 @@ import com.example.services.UserService;
 public class AuthController {
     
     @GetMapping("/login")
-    public String showLoginPage() {
+    public String showLoginPage(            
+        @RequestParam(name = "loginError", required = false) String loginError,
+        @RequestParam(name = "messageSuccess", required = false) String messageSuccess,
+        Model model) {
+
+        if (loginError != null ) {
+            model.addAttribute("messageError", "Email ou mot de passe incorrect");
+            model.addAttribute("messageSuccess", null);
+        }else if (messageSuccess != null) {
+            model.addAttribute("messageSuccess", messageSuccess);
+            model.addAttribute("messageError", null);
+        }else {
+            model.addAttribute("messageError", null);
+            model.addAttribute("messageSuccess", null);
+        }
         return "login";
     }
     @GetMapping("/register")
@@ -34,7 +49,7 @@ public class AuthController {
         }
         AppUser savedUser = userService.saveUser(user);
             model.addAttribute("message", "User " + savedUser.getName() + " registered successfully!");
-            return "redirect:/login";  
+            return "redirect:/login?messageSuccess=vous pouvez authentifier avec votre coordonne";  
        
     }
 
