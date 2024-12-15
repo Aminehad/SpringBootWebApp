@@ -1,6 +1,7 @@
 
 INSERT INTO app_user (name, email, password, phone, address) VALUES
-('Chemsou Br', 'chemsou@example.com', 'Chemsou', '0123456789', '38 rue de Clermon-Ferrand, France');
+('Chemsou Br', 'chamsou@gmail.com', '$2a$10$9h3/gccUBYEexkqWsV/3qOuCfNPX5PWQ92kq0GvtcWQLgpATgjXtO', '0123456789', '38 rue de Clermon-Ferrand, France'),
+('Sama Br', 'sama@gmail.com', '$2a$10$9h3/gccUBYEexkqWsV/3qOuCfNPX5PWQ92kq0GvtcWQLgpATgjXtO', '0123456789', '38 rue de Clermon-Ferrand, France');;
 
 INSERT INTO category (name) VALUES
 ('Vêtements');
@@ -16,7 +17,8 @@ INSERT INTO item (
     created_at,
     updated_at,
     category_id,
-    user_id
+    user_id,
+    disabled
 ) VALUES (
     'Pantalon homme', 
     'Pantalon en coton, taille L avec une bonne qualité. Une couleur bleue avec quelques détails en dessous.', 
@@ -28,7 +30,8 @@ INSERT INTO item (
     NOW(), 
     NOW(), 
     1,           -- category_id (Assurez-vous que la catégorie avec l'ID 2 existe)
-    1            -- user_id (Assurez-vous que l'utilisateur avec l'ID 1 existe)
+    1,           -- user_id (Assurez-vous que l'utilisateur avec l'ID 1 existe),
+    false
 );
 
 
@@ -43,7 +46,8 @@ INSERT INTO item (
     created_at,
     updated_at,
     category_id,
-    user_id
+    user_id,
+    disabled
 ) VALUES (
     'Vest femme',
     'Vest en laine, taille M, couleur noire. Idéal pour la mi-saison.',
@@ -55,7 +59,8 @@ INSERT INTO item (
     '2023-12-08',
     '2023-12-08',
     1,           -- Assurez-vous que la catégorie avec l'ID 2 existe
-    1            -- Assurez-vous que l'utilisateur avec l'ID 1 existe
+    1,           -- Assurez-vous que l'utilisateur avec l'ID 1 existe
+    false
 );
 
 INSERT INTO item (
@@ -69,7 +74,8 @@ INSERT INTO item (
     created_at,
     updated_at,
     category_id,
-    user_id
+    user_id,
+    disabled
 ) VALUES (
     'Chassure de foot',
     'Chassure de football pour hommes, taille 42, en cuir synthétique. Idéale pour les terrains synthétiques.',
@@ -81,7 +87,8 @@ INSERT INTO item (
     '2022-11-02',
     '2022-11-02',
     1,           
-    1            
+    1,
+    false
 );
 
 INSERT INTO item (
@@ -95,7 +102,8 @@ INSERT INTO item (
     created_at,
     updated_at,
     category_id,
-    user_id
+    user_id,
+    disabled
 ) VALUES (
     'Pantalon femme',
     'Pantalon en coton, taille S, couleur grise. Très confortable et stylé pour toute occasion.',
@@ -107,6 +115,10 @@ INSERT INTO item (
     '2024-03-08',
     '2023-03-08',
     1,           -- Assurez-vous que la catégorie avec l'ID 2 existe
-    1            -- Assurez-vous que l'utilisateur avec l'ID 1 existe
+    1  ,          -- Assurez-vous que l'utilisateur avec l'ID 1 existe,
+    false
 );
 
+
+INSERT INTO request (owner_id, requester_id, item_id, status) 
+VALUES (1, 2, 1, 'PENDING');

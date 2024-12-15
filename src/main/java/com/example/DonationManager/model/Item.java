@@ -34,6 +34,8 @@ public class Item {
     private String keyWords;
     private String picture;
 
+    private Boolean disabled;
+
 
     @Enumerated(EnumType.STRING) 
     @Column(nullable = false)
@@ -72,6 +74,14 @@ public class Item {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Boolean getDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(Boolean dis) {
+        this.disabled  =  dis;
     }
 
     public String getTitle() {

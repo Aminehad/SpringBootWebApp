@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="">L'atelier de les aides <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/">L'atelier de les aides <span class="sr-only">(current)</span></a>
             </li>
           </ul>
           <div class="form-inline my-2 my-lg-0">
@@ -44,12 +44,16 @@
           </div>
         </div>
       </nav>
+
       <div class="cart-page ">
+        <div class="success" th:if="${message != null}" th:text="${message}" ></div>
       <div class="header-cart">
         <div class="title">Panier</div>
         <div class="actions">
             <a class="add-item" th:href="@{/products}"  >Ajouter Item</a>
-            <a class="valider" href=""  >Valider</a>
+            <form th:action="@{/cart/confirmRequest}" method="post">
+              <button class="valider" type="submit">Confirmer</button>
+             </form>
         </div>
       </div>
 
@@ -84,5 +88,6 @@
     
       </div>
 </div>
+
 </body>
 </html>

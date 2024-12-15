@@ -59,12 +59,26 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="">L'atelier de les aides <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">L'atelier de les aides <span class="sr-only">(current)</span></a>
           </li>
         </ul>
+        <div th:if="${userId != null}" class="form-inline my-2 my-lg-0">
+          <li class="infoUser" th:if="${userName != null && userName != 'Guest'}">
+            <a class="userName" th:href="'/user/' + ${userId} + '?category=2'" >Mes demandes</a>
+            <a class="userName" href="">|</a>
+            <a class="userName" th:href="'/user/' + ${userId} + '?category=3'" >Demandes reçues</a>
+            <a class="userName" href="">|</a>
+            <a class="userName" th:href="'/user/' + ${userId} + '?category=1'" >Favoris</a>
+          </li>
+        </div>
         <div class="form-inline left-nav my-2 my-lg-0">
-          <img src="https://th.bing.com/th/id/OIP.HDBCTcLzA9xlG5xrkygkuwHaE7?rs=1&pid=ImgDetMain" alt="">
-          <span >Cr. ronaldo</span>
+          <li class="infoUser" th:if="${userName != null}">
+            <a class="userName" th:href="@{/user/{userId}(userId=${userId})}" th:text="${userName}"></a>
+            <a class="userName" href="">|</a>
+            <a class="logOut" href="/logout">Logout</a>
+          </li>
+          <li class="login" th:if="${userName == null}"><a class="login" href="/login">Login</a></li>
+        
         </div>
       </div>
     </nav>
@@ -94,10 +108,18 @@
                         <i class="bi bi-star-fill " th:classappend="${product.status.ordinal() >= 4 ? 'active' : ''}"></i>
                     </div>
                 </div>
+
                 <div class="details-info">
+                  <div class="price" style="display: flex;justify-content: space-between;">
+                    <span class="first-tranch"><i class="bi bi-person-circle"></i><span th:text="${product.user.name}"></span></span>
+                   <span class="date" ><i class="bi bi-telephone"></i> <span th:text="${product.user.phone}" ></span></span>
+                </div>
+                </div>
+                <div class="details-info">
+
                       <div class="price" style="display: flex;justify-content: space-between;">
-                        <span><i class="bi bi-geo-fill"></i></i><span th:text="${product.location}"></span></span>
-                       <span class="date" ><i class="bi bi-calendar4"></i></i> <span th:text="${product.createdAt}" ></span></span>
+                        <span class="first-tranch"><i class="bi bi-geo-fill"></i></i><span th:text="${product.location}"></span></span>
+                        <span class="date" ><i class="bi bi-calendar4"></i></i> <span th:text="${product.createdAt}" ></span></span>
                     </div>
 
                     <div class="reduction">
@@ -116,7 +138,7 @@
                         <option  th:disabled="${product.delivery.name() == 'LIVRAISON'}"  value="A_MAIN">A main</option>
                         <option  th:disabled="${product.delivery.name() == 'A_MAIN'}"  value="LIVRAISON">Livraison</option>
                     </select>
-                    <button type="submit" class="buyButtoncontainer">
+                    <button th:disabled="${product.disabled == true || userId == product.user.id}" type="submit" class="buyButtoncontainer">
                         Ajouter au panier
                     </button>
                     </a>

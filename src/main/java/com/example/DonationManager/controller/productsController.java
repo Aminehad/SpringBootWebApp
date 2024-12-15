@@ -56,7 +56,7 @@ public class productsController {
     EmailService emailService;
 
 
-    @GetMapping("/products")
+    @GetMapping({"/products","/"})
     public String getProductsPage(
             @RequestParam(name = "category", required = false) Long categoryId,
             @RequestParam(name = "startDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
@@ -77,6 +77,7 @@ public class productsController {
             model.addAttribute("email", email);
             Optional<AppUser> userDetailsOptional = userRepository.findByEmail(email);
             AppUser userDetails = userDetailsOptional.orElse(null);
+
             if (userDetails != null) {
                 model.addAttribute("userId", userDetails.getId());
                 model.addAttribute("userName", userDetails.getName());
@@ -101,19 +102,10 @@ public class productsController {
             }
 
         } else {
+            model.addAttribute("userId", null);
             model.addAttribute("userName", "Guest");
         }
 
-        // try {
-        //     emailService.sendSimpleMessage(
-        //         "chemseddineb07@gmail.com",
-        //         "Nouvel item correspondant à votre filtre",
-        //         "Un nouvel item correspondant à vos critères a été ajouté : "
-        //     );
-        // } catch (MessagingException e) {
-        //     e.printStackTrace();
-            
-        // }
         ProductDelivery productDelivery = null;
         ProductStatus productStatus = null;
 
@@ -148,13 +140,28 @@ public class productsController {
     @GetMapping("/products/{id}")
     public String getProductDetailsPage(Model model, @PathVariable Long id) {
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        AppUser user;
+        if (authentication != null && authentication.isAuthenticated() &&
+                !(authentication instanceof org.springframework.security.authentication.AnonymousAuthenticationToken)) {
+            String email = authentication.getName();
+            Optional<AppUser> userDetailsOptional = userRepository.findByEmail(email);
+            user = userDetailsOptional.orElse(null);
+        } else {
+            user =  null;
+        }
+
         Optional<Item> productOptional = productRepository.findById(id);
         if (productOptional.isPresent()) {
-            Long userId = (long) 1;
             Item product = productOptional.get();
-            boolean favorite = product.getFavoritedByUsers().contains(userRepository.findById(userId).get());
             model.addAttribute("product", product);
-            model.addAttribute("favorite", favorite);
+            if (user != null) {
+                model.addAttribute("userName", user.getName());
+                model.addAttribute("userId", user.getId());
+                boolean favorite = product.getFavoritedByUsers().contains(user);
+                model.addAttribute("favorite", favorite);
+            }
+
             return "product";
         }
         return "redirect:/products";
@@ -188,6 +195,7 @@ public class productsController {
             item.setLocation(location);
             item.setKeyWords(keywords);
             item.setDelivery(ProductDelivery.valueOf(delivery));
+            item.setDisabled(false);
             Date currentSqlDate = new Date(System.currentTimeMillis());
             item.setCreatedAt(currentSqlDate);
 
@@ -237,9 +245,21 @@ public class productsController {
 
     @GetMapping("/products/{id}/delete")
     public String deleteProduct(@PathVariable Long id) {
-        Integer userId = 1;
-        productRepository.deleteById(id);
-        return "redirect:/user/" + userId;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        AppUser user;
+        if (authentication != null && authentication.isAuthenticated() &&
+                !(authentication instanceof org.springframework.security.authentication.AnonymousAuthenticationToken)) {
+            String email = authentication.getName();
+            Optional<AppUser> userDetailsOptional = userRepository.findByEmail(email);
+            user = userDetailsOptional.orElse(null);
+            if (user == null || user.getId() != id) {
+                return "redirect:/login";
+            }
+        } else {
+            return "redirect:/login";
+        }
+        productRepository.deleteById(user.getId());
+        return "redirect:/user/" + user.getId();
     }
 
 }

@@ -1,8 +1,13 @@
 .cart-page {
-    padding: 0 40px;
+    padding: 40px;
 }
 
-
+.cart-page .success {
+    color: #41fb3e;
+    font-size: 14px;
+    font-weight: bold; 
+    text-align: center;
+}
 .no-items {
 
     color: #2D2D2D;
@@ -53,4 +58,11 @@
 .header-cart .add-item:hover {
     background-color: #3792e8;
     color: #FFF;
+}
+
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
