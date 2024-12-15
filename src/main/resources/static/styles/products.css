@@ -241,8 +241,22 @@
       }
   
     }
-    @media (min-width: 768px) and (max-width : 1200px) {
+    @media (max-width : 1200px) {
       
+      .content {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 20px 10px;
+      }
+
+      .gallery {
+        width: 90vw;
+      }
+
+      .gallery-items {
+        padding: 10px 5px;
+      }
+
       .gallery .gallery-item {
         height: 360px;
         width: 280px;
@@ -251,6 +265,8 @@
     }
   
     @media (max-width : 768px) {
+
+
   
       .gallery .gallery-item {
           height: 55vw;
