@@ -344,3 +344,11 @@ ul.list-group::-webkit-scrollbar-thumb:hover {
 .details .favorite.active {
   color: #ef4343;
 } 
+
+.favorite-button {
+  margin-left: 10px; 
+  border: 1px solid #1c99f9;
+  border-radius: 0.8rem;
+  padding: 10px 20px;
+  color: #1c99f9;
+}

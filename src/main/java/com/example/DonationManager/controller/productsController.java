@@ -18,14 +18,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.DonationManager.model.Category;
 import com.example.DonationManager.model.FilterSaver;
 import com.example.DonationManager.model.Item;
+import com.example.DonationManager.model.ItemNotification;
 import com.example.DonationManager.model.enumeration.ProductDelivery;
 import com.example.DonationManager.model.enumeration.ProductStatus;
 import com.example.DonationManager.repository.CategoryRepository;
 import com.example.DonationManager.repository.FilterRepository;
+import com.example.DonationManager.repository.ItemNotificationRepository;
 import com.example.DonationManager.repository.ProductRepository;
 import com.example.DonationManager.repository.UserRepository;
 import com.example.services.EmailService;
@@ -53,10 +56,12 @@ public class productsController {
     FilterRepository filterRepository;
 
     @Autowired
+    ItemNotificationRepository itemNotificationRepository;
+
+    @Autowired
     EmailService emailService;
 
-
-    @GetMapping({"/products","/"})
+    @GetMapping({ "/products", "/" })
     public String getProductsPage(
             @RequestParam(name = "category", required = false) Long categoryId,
             @RequestParam(name = "startDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
@@ -70,6 +75,8 @@ public class productsController {
             @RequestParam(name = "orderBy", required = false) Integer orderBy,
             Model model, Principal principal) {
 
+
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated() &&
                 !(authentication instanceof org.springframework.security.authentication.AnonymousAuthenticationToken)) {
@@ -81,19 +88,28 @@ public class productsController {
             if (userDetails != null) {
                 model.addAttribute("userId", userDetails.getId());
                 model.addAttribute("userName", userDetails.getName());
+
+                List<ItemNotification> notifs = itemNotificationRepository.findByUserIdAndIsNewTrue(userDetails.getId());
+                model.addAttribute("notifCount", notifs.size());
                 if (isFilter != null && isFilter.equals("true")) {
                     FilterSaver item = new FilterSaver();
                     if (categoryId != null && categoryRepository.findById(categoryId).isPresent()) {
                         item.setCategory(categoryRepository.findById(categoryId).get());
                     }
-                    if (ProductService.isValidProductStatus(status) ) item.setStatus(ProductStatus.valueOf(status));
-        
+                    if (ProductService.isValidProductStatus(status))
+                        item.setStatus(ProductStatus.valueOf(status));
+
                     item.setUser(userDetails);
-                    if (location != null) item.setLocation(location);
-                    if (keywords != null) item.setKeyWords(keywords);
-                    if (ProductService.isValidProductDelivery(delivery)) item.setDelivery(ProductDelivery.valueOf(delivery));
-                    if (startDate != null) item.setCreatedAt(startDate);
-                    if (endDate != null) item.setDateFin(endDate);
+                    if (location != null)
+                        item.setLocation(location);
+                    if (keywords != null)
+                        item.setKeyWords(keywords);
+                    if (ProductService.isValidProductDelivery(delivery))
+                        item.setDelivery(ProductDelivery.valueOf(delivery));
+                    if (startDate != null)
+                        item.setCreatedAt(startDate);
+                    if (endDate != null)
+                        item.setDateFin(endDate);
                     filterRepository.save(item);
                 }
             } else {
@@ -148,7 +164,7 @@ public class productsController {
             Optional<AppUser> userDetailsOptional = userRepository.findByEmail(email);
             user = userDetailsOptional.orElse(null);
         } else {
-            user =  null;
+            user = null;
         }
 
         Optional<Item> productOptional = productRepository.findById(id);
@@ -160,6 +176,8 @@ public class productsController {
                 model.addAttribute("userId", user.getId());
                 boolean favorite = product.getFavoritedByUsers().contains(user);
                 model.addAttribute("favorite", favorite);
+                List<ItemNotification> notifs = itemNotificationRepository.findByUserIdAndIsNewTrue(user.getId());
+                model.addAttribute("notifCount", notifs.size());
             }
 
             return "product";
@@ -178,6 +196,7 @@ public class productsController {
             @RequestParam("keywords") String keywords,
             @RequestParam("delivery") String delivery,
             @RequestParam("userId") Long userId,
+            RedirectAttributes redirectAttributes,
             Model model) {
 
         try {
@@ -219,32 +238,34 @@ public class productsController {
 
             List<FilterSaver> filters = filterRepository.findAll();
 
-        // Vérification des filtres pour envoyer des notifications
-        System.out.println("filter");
-        for (FilterSaver filter : filters) {
-            System.out.println(filter.getId());
-            if (ProductService.matchesFilter(item, filter)) {
-                System.out.println("match" );
-                // emailService.sendSimpleMessage(
-                //     filter.getUser().getEmail(),
-                //     "Nouvel item correspondant à votre filtre",
-                //     "Un nouvel item correspondant à vos critères a été ajouté : " + item.getTitle()
-                // );
+            // Vérification des filtres pour envoyer des notifications
+            for (FilterSaver filter : filters) {
+                System.out.println(filter.getId());
+                if (ProductService.matchesFilter(item, filter) && filter.getUser().getIsNotification() == true &&  filter.getUser().getId() != item.getUser().getId()) {
+                    emailService.sendSimpleMessage(
+                    filter.getUser().getEmail(),
+                    "Nouvel item correspondant à votre filtre",
+                    "Un nouvel item correspondant à vos critères a été ajouté : '" +
+                    item.getTitle() + "'.\nvous pouvez acceder avec ce lien : http://localhost:8080/products/" + item.getId() 
+                    );
+                    ItemNotification itemNof = new ItemNotification();
+                    itemNof.setItem(item);
+                    itemNof.setUser(filter.getUser());
+                    itemNof.setIsNew(true);
+                    itemNotificationRepository.save(itemNof);
+                }
             }
-        }
 
-            model.addAttribute("successMessage", "Produit ajouté avec succès !");
+            redirectAttributes.addFlashAttribute("message", "Vous avez ajouter votre produit avec succès !");
+        
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            // Ajouter un message d'erreur
-            model.addAttribute("errorMessage", "Erreur lors de l'ajout du produit : " + e.getMessage());
-        }
+            redirectAttributes.addFlashAttribute("message", "Vous avez ajouter votre produit avec succès !");}
 
         return "redirect:/user/" + userId;
     }
 
     @GetMapping("/products/{id}/delete")
-    public String deleteProduct(@PathVariable Long id) {
+    public String deleteProduct(@PathVariable Long id,RedirectAttributes redirectAttributes) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         AppUser user;
         if (authentication != null && authentication.isAuthenticated() &&
@@ -252,14 +273,17 @@ public class productsController {
             String email = authentication.getName();
             Optional<AppUser> userDetailsOptional = userRepository.findByEmail(email);
             user = userDetailsOptional.orElse(null);
-            if (user == null || user.getId() != id) {
+            if (user == null) {
                 return "redirect:/login";
             }
         } else {
             return "redirect:/login";
         }
-        productRepository.deleteById(user.getId());
+        productRepository.deleteById(id);
+        redirectAttributes.addFlashAttribute("message", "vous aves Supprimer le produit  avec Success");
         return "redirect:/user/" + user.getId();
     }
+
+
 
 }

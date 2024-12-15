@@ -22,14 +22,14 @@ public class AuthController {
             Model model) {
 
         if (loginError != null) {
-            model.addAttribute("messageError", "Email ou mot de passe incorrect");
-            model.addAttribute("messageSuccess", null);
+            model.addAttribute("messageErr", "Email ou mot de passe incorrect");
+            model.addAttribute("message", null);
         } else if (messageSuccess != null) {
-            model.addAttribute("messageSuccess", messageSuccess);
-            model.addAttribute("messageError", null);
+            model.addAttribute("message", messageSuccess);
+            model.addAttribute("messageErr", null);
         } else {
-            model.addAttribute("messageError", null);
-            model.addAttribute("messageSuccess", null);
+            model.addAttribute("messageErr", null);
+            model.addAttribute("message", null);
         }
         return "login";
     }
@@ -50,10 +50,8 @@ public class AuthController {
             return "register";
         }
         AppUser savedUser = userService.saveUser(user);
-        redirectAttributes.addFlashAttribute("messageSuccess");
-        model.addAttribute("message", "User " + savedUser.getName() + " registered successfully!");
-        return "redirect:/login?messageSuccess=vous pouvez authentifier avec votre coordonne";
-
+        redirectAttributes.addFlashAttribute("message", "vous pouvez authentifier avec votre coordonnées");
+        return "redirect:/login";
     }
 
 }

@@ -69,6 +69,8 @@
             <a class="userName" th:href="'/user/' + ${userId} + '?category=3'" >Demandes reçues</a>
             <a class="userName" href="">|</a>
             <a class="userName" th:href="'/user/' + ${userId} + '?category=1'" >Favoris</a>
+            <a class="userName" href="">|</a>
+            <a class="userName" href="/notification" >Notifications <span class="notifCount" th:text="'(' + ${notifCount} + ')'"></span></a>
           </li>
         </div>
         <div class="form-inline left-nav my-2 my-lg-0">
@@ -140,7 +142,10 @@
                     </select>
                     <button th:disabled="${product.disabled == true || userId == product.user.id}" type="submit" class="buyButtoncontainer">
                         Ajouter au panier
-                    </button>
+                    </button>  
+                  <a class="favorite-button" th:text="${favorite == true ? 'défavoriser' : 'favoriser'}" th:href="'/user/' + ${1} + '/favorite/' + ${product.id} ">
+                      
+                    </a>
                     </a>
                 </div>
                   

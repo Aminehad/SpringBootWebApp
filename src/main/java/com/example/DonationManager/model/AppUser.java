@@ -23,6 +23,7 @@ public class AppUser {
     private String password;
     private String phone;
     private String address;
+    private Boolean isNotification;
 
     @ManyToMany
     @JoinTable(
@@ -88,5 +89,13 @@ public class AppUser {
 
     public void setFavoriteItems(Set<Item> favoriteItems) {
         this.favoriteItems = favoriteItems;
+    }
+
+    public Boolean getIsNotification() {
+        return isNotification;
+    }
+
+    public void setIsNotification(Boolean isNotif) {
+        this.isNotification = isNotif;
     }
 }
