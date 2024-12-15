@@ -96,7 +96,7 @@
 
   <!-- ======= filter Brands ======= -->
 
-  <div class="productsFound">220 Produits trouvés</div>
+  <div class="productsFound"><span th:text="${products.size()}" ></span> Produits trouvés</div>
   <!-- ======= End filter Brands ======= -->
 
   <form class="content form-filter" action="/products" method="get">
@@ -212,7 +212,8 @@
                 <i class="bi bi-lightbulb-fill icon "></i>
                 <span th:text="${item.createdAt}"></span>
               </div>
-              <img th:src="${item.picture}"  alt="" class="img-fluid" />
+              <a th:href="'/products/' + ${item.id}"><img th:src="${item.picture}"  alt="" class="img-fluid" /></a>
+              
               <a th:href="'/products/' + ${item.id}" class="gallery-lightbox">
                 <div class="iconContainer">+</div>
               </a>

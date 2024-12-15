@@ -15,6 +15,7 @@ body{
 
 }
 
+
 .content .profile-container {
     width: 350px;
     background-color: #FFF;
@@ -280,3 +281,28 @@ body{
     color: #3792e8;
     font-weight: bold;
 }
+
+@media screen and (max-width : 1200px)  {
+    .content{
+     flex-direction: column;
+    } 
+    .products-container {
+     padding: 20px;
+    }
+ 
+    .content .products-container .add-product-container ,.content .products-container .info-product-container {
+     height: 250px;
+     padding: 10px;
+    }
+ }
+ 
+ @media screen and (max-width : 800px)  {
+
+    .content .products-container .add-product-container  {
+     width: 100%;
+    }
+
+    .content .products-container .info-product-container {
+        display: none;
+    }
+ }
