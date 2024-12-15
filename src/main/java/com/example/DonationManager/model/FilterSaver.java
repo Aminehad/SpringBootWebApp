@@ -12,59 +12,41 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Column;
 
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDate;
 
 import com.example.DonationManager.model.enumeration.*;
 
 
-
 @Entity
-public class Item {
+public class FilterSaver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  
     private Long id;
 
-    private String title;
-    private String description;
     private String location;
     private String keyWords;
-    private String picture;
-
-    private Boolean disabled;
-
+    private LocalDate dateFin;
+    private LocalDate createdDate;
 
     @Enumerated(EnumType.STRING) 
-    @Column(nullable = false)
+    @Column(nullable = true)
+    private ProductDelivery delivery;
+
+    @Enumerated(EnumType.STRING) 
+    @Column(nullable = true)
     private ProductStatus status;
 
-    @Enumerated(EnumType.STRING) 
-    @Column(nullable = false)
-    private ProductDelivery delivery;
  
-
     @ManyToOne
     @JoinColumn(name = "category_id")  
     private Category category;
 
-    private String condition;
-
-    @Column(name = "created_at")
-    @DateTimeFormat(pattern = "dd-MM-yyy")
-    private Date createdAt;
-
-    @Column(name = "updated_at")
-    private Date updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")  
     private AppUser user;
 
-    @ManyToMany(mappedBy = "favoriteItems")
-    private Set<AppUser> favoritedByUsers = new HashSet<>();
 
     // Getters and Setters
 
@@ -76,21 +58,7 @@ public class Item {
         this.id = id;
     }
 
-    public Boolean getDisabled() {
-        return disabled;
-    }
 
-    public void setDisabled(Boolean dis) {
-        this.disabled  =  dis;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public String getLocation() {
         return location;
@@ -108,13 +76,6 @@ public class Item {
         this.keyWords = keywords;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public Category getCategory() {
         return category;
@@ -124,29 +85,22 @@ public class Item {
         this.category = category;
     }
 
-    public String getCondition() {
-        return condition;
+    public LocalDate getCreatedAt() {
+        return createdDate;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setCreatedAt(LocalDate createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public LocalDate getDateFin() {
+        return dateFin;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setDateFin(LocalDate date) {
+        this.dateFin = date;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 
     public AppUser getUser() {
         return user;
@@ -172,20 +126,5 @@ public class Item {
         this.delivery = delivery;
     }
 
-    public String getPicture() {
-        return picture;
-    }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-
-    public Set<AppUser> getFavoritedByUsers() {
-        return favoritedByUsers;
-    }
-
-    public void setFavoritedByUsers(Set<AppUser> favoritedByUsers) {
-        this.favoritedByUsers = favoritedByUsers;
-    }
 }

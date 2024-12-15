@@ -31,6 +31,10 @@ public class Request {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+
+    public Long getId () {
+        return  id;
+    }
     public void setStatus(String status) {
         this.status = status;
     }
@@ -51,6 +55,10 @@ public class Request {
     }
     public void setItem (Item item) {
         this.item = item;
+    }
+
+    public Item getItem () {
+        return  item;
     }
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;

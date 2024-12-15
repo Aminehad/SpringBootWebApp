@@ -59,8 +59,13 @@
     <div class="login">
       <div class="container">
         <h1>Registrez-vous pour accéder à<br />votre compte</h1>
-
-          <h2 class="messageError" > message Error</h2>
+        <div th:if="${messageError != null }" >
+          <h2  class="messageError" th:text="${messageError}" ></h2>
+        </div>
+        <div class="success" th:if="${message != null}" th:text="${message}" ></div>
+        <div th:if="${messageSuccess != null }" >
+          <h2  class="messageSuccess" th:text="${messageSuccess}" ></h2>
+        </div>
 
         <div class="login-form">
           <form method="post" action="/register">

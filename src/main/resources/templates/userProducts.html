@@ -1,299 +1,326 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta charset="ISO-8859-1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ecommerce</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
-    />
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 
-    <link rel="stylesheet" href="/styles/userProducts.css" />
-    <link rel="stylesheet" href="/styles/shared.css" />
-    <link rel="stylesheet" href="/styles/products.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//fonts.googleapis.com/css?family=Josefin+Sans"
-    />
-    <style>
-      body {
-        font-family: "Josefin Sans";
-      }
-    </style>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.js"
-      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-      crossorigin="anonymous"
-    ></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta charset="ISO-8859-1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecommerce</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" />
 
-  <body>
+  <link rel="stylesheet" href="/styles/userProducts.css" />
+  <link rel="stylesheet" href="/styles/shared.css" />
+  <link rel="stylesheet" href="/styles/products.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
+  <style>
+    body {
+      font-family: "Josefin Sans";
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+</head>
 
-    <div id="viewport">
+<body>
 
-      <!-- Content -->
-        <nav class="navbar navbar-expand-lg navbar-light ">
-          <a class="navbar-brand" href="/">
-            <img src="/pictures/logo.png" alt="">
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-      
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-              <li class="nav-item active">
-                <a class="nav-link" href="">L'atelier de les aides <span class="sr-only">(current)</span></a>
-              </li>
-            </ul>
-            <div class="form-inline left-nav my-2 my-lg-0">
-              <img src="https://th.bing.com/th/id/OIP.HDBCTcLzA9xlG5xrkygkuwHaE7?rs=1&pid=ImgDetMain" alt="">
-              <span >Cr. ronaldo</span>
-            </div>
+  <div id="viewport">
+
+    <!-- Content -->
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <a class="navbar-brand" href="/">
+        <img src="/pictures/logo.png" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">L'atelier de les aides <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <div class="form-inline left-nav my-2 my-lg-0">
+          <img src="https://th.bing.com/th/id/OIP.2TiYRSc6TYsggRYkt9MTeQHaHa?w=184&h=184&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+            alt="">
+          <span th:text="${user.name}"></span>
+
+          <a class="logOut" href="/logout">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content">
+      <div class="products-container">
+        <div class="header">
+          <div class="add-product-container">
+            <i class="bi bi-bag-plus-fill icon"></i>
+            <div class="add-product-text">Un simple geste de gentillesse peut illuminer la journée de quelqu'un. Let's
+              help each other 😊</div>
+            <div data-toggle="modal" data-target="#add-product-modal" class="add-product">Ajouter Produit</div>
           </div>
-        </nav>
+          <div class="info-product-container">
+            <i class="bi bi-diagram-3 icon"></i>
+            <div class="info-product-text">Vous avez aider les autres avec <span th:text="${size}"></span> produit .
+              Merci pour tous vous aides 😊</div>
 
-        <div class="content">
-          <div class="products-container">
-            <div class="header">
-              <div class="add-product-container">
-                <i class="bi bi-bag-plus-fill icon"></i>
-                <div class="add-product-text">Un simple geste de gentillesse peut illuminer la journée de quelqu'un. Let's help each other 😊</div>
-                <div data-toggle="modal" data-target="#add-product-modal" class="add-product">Ajouter Produit</div>
-              </div>
-              <div class="info-product-container">
-                <i class="bi bi-diagram-3 icon"></i>
-                <div class="info-product-text">Vous avez aider les autres avec <span th:text="${products.size()}" ></span> produit . Merci pour tous vous aides 😊</div>
-                
-              </div>
-            </div>
-
-
-            <div class="categories">
-              <a  th:href="'/user/'+ ${user.id}"><div class="category" th:classappend="${category != 1 && category != 2 ? 'active' : ''}" >Crée</div></a>
-              <a  th:href="'/user/'+ ${user.id} + '?category=1'" ><div class="category" th:classappend="${category == 1 ? 'active' : ''}">Favorisés</div></a>
-              <a  th:href="'/user/'+ ${user.id} + '?category=2'" ><div class="category" th:classappend="${category == 2 ? 'active' : ''}">Prisés</div></a>
-            </div>
-        
-            <div class="gallery gallery-user">
-            <div class="gallery-items">
-
-              <div th:if="${products.size() == 0}">
-                <p>Non Produits pour le moment :)</p>
-            </div>
-
-              <th:block th:each="item : ${products}">
-
-                <div class="product">
-                       <!-- Modal -->
-                        <div class="modal  fade" th:id="'product-modal-edit-' + ${item.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered " role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Vous Voulez supprimer le Produit ?</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <form th:action="'/products/' + ${item.id} + '/delete'" method="get"  >  
-                              <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary modal-submit ">Supprimer</button>
-                              </div>
-                            </form>
-                            </div>
-                          </div>
-                        </div>
-                  <div class="gallery-item">
-                    <div class="date">
-                      <i class="bi bi-lightbulb-fill icon "></i>
-                      <span th:text="${item.createdAt}"></span>
-                    </div>
-                    <a th:href="'/products/' + ${item.id}"><img th:src="${item.picture}"  alt="" class="img-fluid" /></a>
-                    
-                    <a  class="gallery-lightbox">
-                      <div data-toggle="modal" th:data-target="'#product-modal-edit-' + ${item.id}" class="iconContainer trash"><i class="bi bi-trash2"></i></div>
-                    </a>
-                  </div>
-                  <h1 th:text="${item.title}"></h1>
-                  <div class="location"><i class="bi bi-geo-fill"></i><span th:text="${item.location}"></span></div>
-                  <div class="rating">
-                    <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 0 ? 'active' : ''}"></i>
-                    <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 1 ? 'active' : ''}"></i>
-                    <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 2 ? 'active' : ''}"></i>
-                    <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 3 ? 'active' : ''}"></i>
-                    <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 4 ? 'active' : ''}"></i>
-                  </div>
-                </div>
-              </th:block>
-          
-            </div>
-          </div>
-
-          </div>
-          <div class="profile-container">
-            <div class="picture-container">
-              <img src="https://th.bing.com/th/id/OIP.HDBCTcLzA9xlG5xrkygkuwHaE7?rs=1&pid=ImgDetMai" alt="">
-              <div class="change-picture">Changer</div>
-            </div>
-            <div class="info">
-              <label class="label" >Nom de profile</label>
-              <input type="text" class="value" th:value="${user.name}" >
-            </div>
-            <div class="info">
-              <label class="label" >Email</label>
-              <input type="text" class="value" th:value="${user.email}" >
-            </div>
-            <div class="info">
-              <label class="label" >Numero de téléphone</label>
-              <input type="text" class="value" th:value="${user.phone}" >
-            </div>
-            <div class="info">
-              <label class="label" >Address</label>
-              <input type="text" class="value" th:value="${user.address}" >
-            </div>
-
-            <div class="save-profile">Sauvgarder</div>
-
-            <div class="password"> vous vouler changer votre mot de passe !</div>
           </div>
         </div>
-        
+
+        <div class="categories">
+          <a th:href="'/user/'+ ${user.id}">
+            <div class="category" th:classappend="${category != 1 && category != 2 && category != 3 ? 'active' : ''}">
+              Crée</div>
+          </a>
+          <div class="category">|</div>
+          <a th:href="'/user/'+ ${user.id} + '?category=1'">
+            <div class="category" th:classappend="${category == 1 ? 'active' : ''}">Favorisés</div>
+          </a>
+          <div class="category">|</div>
+          <a th:href="'/user/'+ ${user.id} + '?category=2'">
+            <div class="category" th:classappend="${category == 2 ? 'active' : ''}">Mes demandes</div>
+          </a>
+          <div class="category">|</div>
+          <a th:href="'/user/'+ ${user.id} + '?category=3'">
+            <div class="category" th:classappend="${category == 3 ? 'active' : ''}">Demande reçues</div>
+          </a>
+        </div>
+
+        <div class="gallery gallery-user">
+          <div class="gallery-items">
+
+            <div th:if="${products != null && products.size() == 0}">
+              <p>Non Produits pour le moment :)</p>
+            </div>
+
+            <div th:if="${ requests != null && requests.size() == 0}">
+              <p>Non demandes pour le moment :)</p>
+            </div>
+
+            <th:block th:if="${category != 3 && category != 2}" th:each="item : ${products}">
+
+              <div class="product">
+                <!-- Modal -->
+                <div class="modal  fade" th:id="'product-modal-edit-' + ${item.id}" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered " role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Vous Voulez supprimer le Produit ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <form th:action="'/products/' + ${item.id} + '/delete'" method="get">
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary modal-submit ">Supprimer</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="gallery-item">
+                  <div class="date">
+                    <i class="bi bi-lightbulb-fill icon "></i>
+                    <span th:text="${item.createdAt}"></span>
+                  </div>
+                  <a th:href="'/products/' + ${item.id}"><img th:src="${item.picture}" alt="" class="img-fluid" /></a>
+
+                  <a class="gallery-lightbox">
+                    <div th:if="${category != 1 && category != 2}" data-toggle="modal"
+                      th:data-target="'#product-modal-edit-' + ${item.id}" class="iconContainer trash"><i
+                        class="bi bi-trash2"></i></div>
+                  </a>
+                </div>
+                <h1 th:text="${item.title}"></h1>
+                <div class="location"><i class="bi bi-geo-fill"></i><span th:text="${item.location}"></span></div>
+                <div class="rating">
+                  <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 0 ? 'active' : ''}"></i>
+                  <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 1 ? 'active' : ''}"></i>
+                  <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 2 ? 'active' : ''}"></i>
+                  <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 3 ? 'active' : ''}"></i>
+                  <i class="bi bi-star-fill " th:classappend="${item.status.ordinal() >= 4 ? 'active' : ''}"></i>
+                </div>
+              </div>
+            </th:block>
+
+
+            <th:block th:if="${category == 3 || category == 2}" th:each="req : ${requests}">
+              <div class="product">
+                <!-- Modal -->
+                <div class="gallery-item">
+                  <div class="date">
+                    <i class="bi bi-lightbulb-fill icon "></i>
+                    <span th:text="${req.item.createdAt}"></span>
+                  </div>
+                  <a th:href="'/products/' + ${req.item.id}"><img th:src="${req.item.picture}" alt=""
+                      class="img-fluid" /></a>
+
+                  <a th:href="'/products/' + ${req.item.id}" class="gallery-lightbox">
+                    <div data-toggle="modal" class="iconContainer"><i class="bi bi-eye"></i></div>
+                  </a>
+                </div>
+                <h1 th:text="${req.item.title}"></h1>
+                <h1 th:if="${category == 2}">Recepteur : <span th:text="${req.owner.name}"></span></h1>
+                <h1 th:if="${category == 2}">Phone : <span th:text="${req.owner.phone}"></span></h1>
+                <h1 th:if="${category == 2}">location : <span th:text="${req.owner.address}"></span></h1>
+                <h1 th:if="${category == 3}">demandeur : <span th:text="${req.requester.name}"></span></h1>
+                <h1 th:if="${category == 3}">Phone : <span th:text="${req.requester.phone}"></span></h1>
+                <h1 th:if="${category == 3}">location : <span th:text="${req.requester.address}"></span></h1>
+                <div th:if="${category == 3 && req.status == 'PENDING'}" class="actions">
+                  <a th:href="'/cart/accepteRequest/' + ${req.id}">
+                    <div class="accepter">Accepter</div>
+                  </a>
+                  <a th:href="'/cart/refuserRequest/' + ${req.id}">
+                    <div class="refuser">Refuser</div>
+                  </a>
+                </div>
+
+                <div
+                  th:classappend="${req.status == 'REJECTED' ? 'rejected' : req.status == 'CONFIRMED' ? 'confirmed' : ''}"
+                  th:text="${req.status}" th:if="${category == 3 && req.status != 'PENDING'}" class="status">
+                </div>
+
+                <div
+                  th:classappend="${req.status == 'REJECTED' ? 'rejected' : req.status == 'CONFIRMED' ? 'confirmed' : ''}"
+                  th:text="${req.status}" th:if="${category == 2}" class="status">
+
+                </div>
+
+
+
+              </div>
+            </th:block>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="profile-container">
+        <div class="picture-container">
+          <img src="https://th.bing.com/th/id/OIP.2TiYRSc6TYsggRYkt9MTeQHaHa?w=184&h=184&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+            alt="">
+          <div class="change-picture">Changer</div>
+        </div>
+        <div class="info">
+          <label class="label">Nom de profile</label>
+          <input type="text" class="value" th:value="${user.name}">
+        </div>
+        <div class="info">
+          <label class="label">Email</label>
+          <input type="text" class="value" th:value="${user.email}">
+        </div>
+        <div class="info">
+          <label class="label">Numero de téléphone</label>
+          <input type="text" class="value" th:value="${user.phone}">
+        </div>
+        <div class="info">
+          <label class="label">Address</label>
+          <input type="text" class="value" th:value="${user.address}">
+        </div>
+
+        <div class="save-profile">Sauvgarder</div>
+
+        <div class="password"> vous vouler changer votre mot de passe !</div>
+      </div>
     </div>
 
+  </div>
 
 
 
-         <!-- Modal -->
-         <div class="modal fade" id="add-product-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Ajouter Produit</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <form action="/products" method="post"  enctype="multipart/form-data"  >
-                <input required  th:value="${user.id}"   class="info" type="hidden" name="userId" placeholder="Nom">
-              <div class="modal-body edit-container" >
-                <div class="input-container">
-                  <label>Photo : </label>
-                  <input
-                    class="info file "
-                    type="file"
-                    name="picture"
-                    placeholder="Photo"
-                    required
-                  />
-                </div>
-                  <div class="input-container">
-                      <label>Nom de Produit : </label>
-                      <input required  value=""   class="info" type="text" name="title" placeholder="Nom">
-                  </div>  
-                  <div class="input-container">
-                    <label>Descreption : </label>
-                    <input required value=""   class="info" type="text" name="description" placeholder="Description ...">
-                  </div> 
-                  <div class="input-container">
-                    <label>Categorie : </label>
-                    <select
-                    value=""
-                    class="info"
-                    type="text"
-                    name="categoryId"
-                    placeholder="Type"
-                    required
-                  >
-                    <option  selected disabled value="S">Type</option>
-                    <th:block th:each="item : ${categories}">
-                      <option  th:value="${item.id}" th:label="${item.name}"></option>
-                  </th:block>
-                  </select>
-                    
-                  </div>  
-                  <div class="input-container">
-                    <label>Qualité : </label>
-                    <select
-                    value=""
-                    class="info"
-                    type="text"
-                    name="status"
-                    placeholder="Type"
-                    required
-                  >
-                    <option  selected disabled value="S">Qualité</option>
-                    <option  value="DEFECTUEUX" label="Defectueux"></option>
-                    <option  value="USE" label="Use"></option>
-                    <option  value="ACCEPTABLE" label="Acceptable"></option>
-                    <option  value="BON" label="Bon"></option>
-                    <option  value="NEUF" label="Neuf"></option>
-                  </select>
-                    
-                  </div>  
-                  <div class="input-container">
-                    <label>Location : </label>
-                    <input required value=""   class="info" type="text" name="location" placeholder="Clermont-F, France ....">                
-                  </div>
-                  <div class="input-container">
-                    <label>Mots clés : </label>
-                    <input required value=""   class="info" type="text" name="keywords" placeholder="Tags">                
-                  </div>
-                  <div class="input-container">
-                    <label>Livraison : </label>
-                    <Select name="delivery" >
-                      <option  value="TOUS" label="Tous"></option>
-                      <option  value="A_MAIN" label="A Main"></option>
-                      <option  value="LIVRAISON" label="Livraison"></option>
-                    </Select> 
-                  </div> 
+
+  <!-- Modal -->
+  <div class="modal fade" id="add-product-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Ajouter Produit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="/products" method="post" enctype="multipart/form-data">
+          <input required th:value="${user.id}" class="info" type="hidden" name="userId" placeholder="Nom">
+          <div class="modal-body edit-container">
+            <div class="input-container">
+              <label>Photo : </label>
+              <input class="info file " type="file" name="picture" placeholder="Photo" required />
             </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-secondary modal-submit ">Ajouter</button>
-              </div>
-            </form>
+            <div class="input-container">
+              <label>Nom de Produit : </label>
+              <input required value="" class="info" type="text" name="title" placeholder="Nom">
+            </div>
+            <div class="input-container">
+              <label>Descreption : </label>
+              <input required value="" class="info" type="text" name="description" placeholder="Description ...">
+            </div>
+            <div class="input-container">
+              <label>Categorie : </label>
+              <select value="" class="info" type="text" name="categoryId" placeholder="Type" required>
+                <option selected disabled value="S">Type</option>
+                <th:block th:each="item : ${categories}">
+                  <option th:value="${item.id}" th:label="${item.name}"></option>
+                </th:block>
+              </select>
+
+            </div>
+            <div class="input-container">
+              <label>Qualité : </label>
+              <select value="" class="info" type="text" name="status" placeholder="Type" required>
+                <option selected disabled value="S">Qualité</option>
+                <option value="DEFECTUEUX" label="Defectueux"></option>
+                <option value="USE" label="Use"></option>
+                <option value="ACCEPTABLE" label="Acceptable"></option>
+                <option value="BON" label="Bon"></option>
+                <option value="NEUF" label="Neuf"></option>
+              </select>
+
+            </div>
+            <div class="input-container">
+              <label>Location : </label>
+              <input required value="" class="info" type="text" name="location" placeholder="Clermont-F, France ....">
+            </div>
+            <div class="input-container">
+              <label>Mots clés : </label>
+              <input required value="" class="info" type="text" name="keywords" placeholder="Tags">
+            </div>
+            <div class="input-container">
+              <label>Livraison : </label>
+              <Select name="delivery">
+                <option value="TOUS" label="Tous"></option>
+                <option value="A_MAIN" label="A Main"></option>
+                <option value="LIVRAISON" label="Livraison"></option>
+              </Select>
             </div>
           </div>
-        </div>
-    
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <script src="/script/commande.js"></script>
-  </body>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary modal-submit ">Ajouter</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="/script/commande.js"></script>
+</body>
+
 </html>

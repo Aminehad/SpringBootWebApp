@@ -96,6 +96,23 @@ body{
   #navbar Section
   --------------------------------------------------------------*/
   
+  
+  .infoUser {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+
+
+  .userName, .logOut , .login {
+    color: #2d2d2d;
+    list-style: none;
+  }
+
+  .userName:hover, .logOut:hover , .login:hover{
+    color: #3792e8;
+  }
+
   nav {
     position: sticky;
     top: 0;
@@ -627,6 +644,59 @@ a {
   bottom: 20px;
   right: 20px;
   cursor: pointer;
+}
+
+.product .actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product .status {
+  font-size: 13px;
+  font-weight: bold;
+  border: 1px solid #f99339;
+  padding: 10px 5px;
+  border-radius: 0.4rem;
+  color: #f99339;
+  text-align: center;
+  width: 100px;
+}
+.product .status.rejected {
+  color: #e8377e;
+  border-color: #e8377e;
+}
+.product .status.confirmed {
+  color: #4ded42;
+  border-color: #4ded42;
+}
+
+.product .accepter {
+  background-color: #3792e8;
+  color: #FFF;
+  border: 1px solid #3792e8;
+  border-radius: 0.4rem;
+  font-size: 12px;
+  padding: 8px 0px;
+  width: 100px;
+  text-align: center;
+}
+
+.product .refuser {
+  background-color: #e8377e;
+  color: #FFF;
+  border: 1px solid #e8377e;
+  border-radius: 0.4rem;
+  font-size: 12px;
+  padding: 8px 0px;
+  width: 100px;
+  text-align: center;
+}
+
+.gallery .gallery-item .iconContainer .icon {
+  font-size: 14px;
+  margin-top: 4px;
+  font-weight: bold;
 }
 
 .gallery .gallery-item .iconContainer.trash {

@@ -25,6 +25,7 @@ CREATE TABLE item (
     status VARCHAR(50) NOT NULL,
     delivery VARCHAR(50) NOT NULL,
     category_id BIGINT,
+    disabled BOOLEAN NOT NULL,
     condition VARCHAR(255),
     created_at DATE,
     updated_at DATE,
@@ -42,4 +43,18 @@ CREATE TABLE user_favorites (
     FOREIGN KEY (user_id) REFERENCES app_user(id) ON DELETE CASCADE, -- Deletes all favorites if the user is deleted
     FOREIGN KEY (item_id) REFERENCES item(id) ON DELETE CASCADE, -- Deletes all favorites if the item is deleted
     UNIQUE (user_id, item_id) -- Ensures a user can't favorite the same item multiple times
+);
+
+CREATE TABLE request (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    owner_id BIGINT NOT NULL,
+    requester_id BIGINT NOT NULL,
+    item_id BIGINT NOT NULL,
+    status VARCHAR(20) NOT NULL,  -- Exemple : "PENDING", "CONFIRMED", "REJECTED"
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (owner_id) REFERENCES app_user(id),  -- lien avec la table AppUser
+    FOREIGN KEY (requester_id) REFERENCES app_user(id),  -- lien avec la table AppUser
+    FOREIGN KEY (item_id) REFERENCES item(id)  -- lien avec la table Item
 );

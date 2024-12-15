@@ -1,6 +1,8 @@
 package com.example.services;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +24,6 @@ public class RequestService {
     public Optional <Request> findByRequesterAndItemAndStatus(AppUser requester, Item item, String status) {
         return requestRepository.findByRequesterAndItemAndStatus(requester, item, status);
     }
+
 
 }

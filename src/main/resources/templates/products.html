@@ -39,15 +39,25 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-          <a class="nav-link" href="">L'atelier de les aides <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/">L'atelier de les aides <span class="sr-only">(current)</span></a>
         </li>
       </ul>
-      <div class="form-inline my-2 my-lg-0">
-        <li th:if="${userName != null && userName != 'Guest'}">
-          <a th:href="@{/user/{userId}(userId=${userId})}" th:text="${userName}"></a>
-          <a href="/logout">Logout</a>
+      <div th:if="${userId != null}" class="form-inline my-2 my-lg-0">
+        <li class="infoUser" th:if="${userName != null && userName != 'Guest'}">
+          <a class="userName" th:href="'/user/' + ${userId} + '?category=2'" >Mes demandes</a>
+          <a class="userName" href="">|</a>
+          <a class="userName" th:href="'/user/' + ${userId} + '?category=3'" >Demandes reçues</a>
+          <a class="userName" href="">|</a>
+          <a class="userName" th:href="'/user/' + ${userId} + '?category=1'" >Favoris</a>
         </li>
-        <li th:if="${userName == 'Guest'}"><a href="/login">Login</a></li>
+      </div>
+      <div class="form-inline my-2 my-lg-0">
+        <li class="infoUser" th:if="${userName != null && userName != 'Guest'}">
+          <a class="userName" th:href="@{/user/{userId}(userId=${userId})}" th:text="${userName}"></a>
+          <a class="userName" href="">|</a>
+          <a class="logOut" href="/logout">Logout</a>
+        </li>
+        <li class="login" th:if="${userName == 'Guest'}"><a class="login" href="/login">Login</a></li>
       </div>
     </div>
   </nav>
@@ -68,7 +78,10 @@
                 <p class="animate__animated animate__fadeInUp">
                   Un simple geste de gentillesse peut illuminer la journée de quelqu'un. Let's help each other😊
                 </p>
-                <div>
+                <div th:if="${userName != null && userName != 'Guest'}">
+                  <a th:href="'/user/' + ${userId}" class="btn-menu animate__animated animate__fadeInUp scrollto">Profile</a>
+                 </div>
+                <div th:if="${userName == 'Guest' }">
                   <a href="/login" class="btn-menu animate__animated animate__fadeInUp scrollto">Login</a>
                   <a href="/register" class="btn-book animate__animated animate__fadeInUp scrollto">Register</a>
                 </div>
@@ -87,6 +100,7 @@
   <!-- ======= End filter Brands ======= -->
 
   <form class="content form-filter" action="/products" method="get">
+    <input type="hidden" name="isFilter" value="true">
     <div  class="filters-container">
       <div class="title">
         <span>Filter</span>
@@ -191,8 +205,8 @@
         </div>
       </div>
       <div class="gallery-items">
-        <th:block th:each="item : ${products}">
-          <div class="product">
+        <th:block th:each="item : ${products} ">
+          <div th:if="${item.disabled != true && (userId == null ||  userId != item.user.id)}" class="product">
             <div class="gallery-item">
               <div class="date">
                 <i class="bi bi-lightbulb-fill icon "></i>
