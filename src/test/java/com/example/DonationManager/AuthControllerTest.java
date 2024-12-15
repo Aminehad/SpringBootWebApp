@@ -86,6 +86,6 @@ public class AuthControllerTest {
                 .param("email", "new@example.com")
                 .param("name", "New User"))
             .andExpect(status().is3xxRedirection())  
-            .andExpect(redirectedUrl("/login?messageSuccess=vous pouvez authentifier avec votre coordonne"));
+            .andExpect(redirectedUrl("/login"));
     }
 }

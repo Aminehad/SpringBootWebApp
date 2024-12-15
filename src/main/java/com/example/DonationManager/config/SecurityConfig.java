@@ -60,7 +60,9 @@ public class SecurityConfig{
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                 (requests) -> {
-                    requests.anyRequest().permitAll();}
+                    requests.requestMatchers("/login", "/products","/register", "/styles/**", "/pictures/**" ).permitAll();
+                    requests.anyRequest().authenticated();
+                }
                 )
                 .cors(Customizer.withDefaults())
                 .headers((headers) -> headers.frameOptions(Customizer.withDefaults()).disable());

@@ -183,7 +183,7 @@ public class CartController {
             }
         }
 
-        redirectAttributes.addFlashAttribute("message", "Vous aves valider votre demance avec success, attendant la confiramtion de propietaire :)");
+        redirectAttributes.addFlashAttribute("message", "Vous avez valider votre demande avec succes en attendant la confiramtion du propietaire :)");
         session.removeAttribute("cart"); 
         return "redirect:/cart"; // Redirect back to the cart page
     }
@@ -196,7 +196,7 @@ public class CartController {
                     Item item = request.getItem();
                     item.setDisabled(true);
                     productRepository.save(item);
-                    redirectAttributes.addFlashAttribute("message", "Vous aves accepter la demande avec success !");
+                    redirectAttributes.addFlashAttribute("message", "Vous avez accepté la demande avec succès");
         return "redirect:/user/1?category=3";
     }
 
