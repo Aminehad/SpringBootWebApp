@@ -109,7 +109,7 @@ public class CartController {
             cart.addItem(product);
             redirectAttributes.addFlashAttribute("message", "Vous avez ajouté un produit :)");
         } else {
-            redirectAttributes.addFlashAttribute("message", "ce produit est deja existe :)");
+            redirectAttributes.addFlashAttribute("messageErr", "ce produit est deja existe :)");
         }
         
         return "redirect:/cart"; 
@@ -139,6 +139,7 @@ public class CartController {
         return "redirect:/cart"; 
     }
     
+    
     @PostMapping("/cart/confirmRequest")
     public String confirmAllRequests(HttpSession session,RedirectAttributes redirectAttributes) {
         // Retrieve the cart from the session
@@ -151,7 +152,7 @@ public class CartController {
 
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null || cart.getItems().isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Your cart is empty.");
+            redirectAttributes.addFlashAttribute("messageErr", "Your cart is empty.");
             return "redirect:/cart"; 
         }
 
@@ -160,7 +161,7 @@ public class CartController {
             Optional<Request> existingRequest = requestService.findByRequesterAndItemAndStatus(loggedInUser, item, "PENDING");
             if (existingRequest.isPresent()) {
                 // If there is an existing pending request for this item, clear the item from his cart and show an error message
-                redirectAttributes.addFlashAttribute("message", "Vous avez déjà une demande en attente pour l'article: " + item.getTitle());
+                redirectAttributes.addFlashAttribute("messageErr", "Vous avez déjà une demande en attente pour l'article: " + item.getTitle());
                 cart.removeItem(item);
                 return "redirect:/cart";
             }
@@ -182,7 +183,7 @@ public class CartController {
             }
         }
 
-        redirectAttributes.addFlashAttribute("message", "Vous aves valider votre demance avec succes e, attendant la confiramtion de propietaire :)");
+        redirectAttributes.addFlashAttribute("message", "Vous aves valider votre demance avec success, attendant la confiramtion de propietaire :)");
         session.removeAttribute("cart"); 
         return "redirect:/cart"; // Redirect back to the cart page
     }
@@ -195,7 +196,7 @@ public class CartController {
                     Item item = request.getItem();
                     item.setDisabled(true);
                     productRepository.save(item);
-                    redirectAttributes.addFlashAttribute("message", "Vous aves valider votre demance avec succes e, attendant la confiramtion de propietaire :)");
+                    redirectAttributes.addFlashAttribute("message", "Vous aves accepter la demande avec success !");
         return "redirect:/user/1?category=3";
     }
 
@@ -204,7 +205,7 @@ public class CartController {
         Request request = reqRepository.findById(id).get();
                     request.setStatus("REJECTED");
                     reqRepository.save(request);
-
+                    redirectAttributes.addFlashAttribute("message", "Vous aves refuser la demande avec success :)");
         return "redirect:/user/1?category=3";
     }
 

@@ -806,3 +806,7 @@ color: #5b5959;
 .rating i.active {
 color: #3792e899;
 }
+
+.notifCount {
+  color: #f91212;
+}

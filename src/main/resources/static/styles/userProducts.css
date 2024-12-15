@@ -98,6 +98,7 @@ body{
     text-align: center;
     border-radius: 0.6rem;
     cursor: pointer;
+    width: 100%;
 }
 
 .content .profile-container .save-profile:hover {
@@ -127,7 +128,7 @@ body{
     justify-content: center;
     flex-direction: column;
     padding: 30px;
-    gap: 20px;
+    gap: 10px;
     height: 200px;
 }
 
@@ -159,6 +160,27 @@ body{
     border-color: #3792e8;
     color: #3792e8;
 }
+.content .products-container .info-product-container a {
+    display: flex;
+    justify-content: center;
+}
+.content .products-container .info-product-container .notification {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #FFF;
+    background-color: #3792e8;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    border: 1px solid #3792e8;
+    gap: 10px;
+    width: fit-content;
+    text-align: center;
+}
+
+.content .products-container .info-product-container .notification.disable {
+    background-color: #f33c3c;
+    border-color: #f33c3c;
+}
 
 
 .content .products-container .info-product-container {
@@ -170,7 +192,7 @@ body{
     justify-content: center;
     flex-direction: column;
     padding: 30px;
-    gap: 20px;
+    gap: 10px;
     height: 200px;
 }
 
@@ -298,11 +320,49 @@ body{
  
  @media screen and (max-width : 800px)  {
 
+    .content .header {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
     .content .products-container .add-product-container  {
      width: 100%;
     }
 
     .content .products-container .info-product-container {
-        display: none;
+        width: 100%;
     }
  }
+
+ @media (max-width : 1200px) {
+      
+    .user-page .content {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px;
+    }
+}
+
+ .messageError {
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 0.8rem;
+    background-color: #ea413e;
+    border: 1px solid #ea413e;
+  }
+ .messageSuccess {
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 0.8rem;
+    background-color: #48f026;
+    border: 1px solid #48f026;
+
+  }

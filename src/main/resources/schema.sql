@@ -6,7 +6,8 @@ CREATE TABLE app_user (
     phone VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     created_at DATE,
-    updated_at DATE
+    updated_at DATE,
+    is_notification BOOLEAN
 );
 
 CREATE TABLE category (
@@ -54,7 +55,17 @@ CREATE TABLE request (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     
-    FOREIGN KEY (owner_id) REFERENCES app_user(id),  -- lien avec la table AppUser
-    FOREIGN KEY (requester_id) REFERENCES app_user(id),  -- lien avec la table AppUser
-    FOREIGN KEY (item_id) REFERENCES item(id)  -- lien avec la table Item
+    FOREIGN KEY (owner_id) REFERENCES app_user(id) ON DELETE CASCADE,  -- lien avec la table AppUser
+    FOREIGN KEY (requester_id) REFERENCES app_user(id) ON DELETE CASCADE,  -- lien avec la table AppUser
+    FOREIGN KEY (item_id) REFERENCES item(id) ON DELETE CASCADE  -- lien avec la table Item
+);
+
+CREATE TABLE item_notification (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    item_id BIGINT NOT NULL,
+    is_new BOOLEAN NOT NULL DEFAULT true,
+    -- Foreign key constraints
+    FOREIGN KEY (user_id) REFERENCES app_user(id) ON DELETE CASCADE,
+    FOREIGN KEY (item_id) REFERENCES item(id) ON DELETE CASCADE
 );

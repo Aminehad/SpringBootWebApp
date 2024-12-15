@@ -59,11 +59,11 @@
     <div class="login">
       <div class="container">
         <h1>Connectez-vous pour accéder à<br />votre compte</h1>
-          <div th:if="${messageError != null }" >
-            <h2  class="messageError" th:text="${messageError}" ></h2>
+          <div th:if="${messageErr != null }" >
+            <h2  class="messageError" th:text="${messageErr}" ></h2>
           </div>
-          <div th:if="${messageSuccess != null }" >
-            <h2  class="messageSuccess" th:text="${messageSuccess}" ></h2>
+          <div th:if="${message != null }" >
+            <h2  class="messageSuccess" th:text="${message}" ></h2>
           </div>
 
         <div class="login-form">

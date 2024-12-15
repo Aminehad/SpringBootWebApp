@@ -49,6 +49,8 @@
           <a class="userName" th:href="'/user/' + ${userId} + '?category=3'" >Demandes reçues</a>
           <a class="userName" href="">|</a>
           <a class="userName" th:href="'/user/' + ${userId} + '?category=1'" >Favoris</a>
+          <a class="userName" href="">|</a>
+          <a class="userName" href="/notification" >Notifications <span class="notifCount" th:text="'(' + ${notifCount} + ')'"></span></a>
         </li>
       </div>
       <div class="form-inline my-2 my-lg-0">
@@ -96,7 +98,8 @@
 
   <!-- ======= filter Brands ======= -->
 
-  <div class="productsFound"><span th:text="${products.size()}" ></span> Produits trouvés</div>
+
+  
   <!-- ======= End filter Brands ======= -->
 
   <form class="content form-filter" action="/products" method="get">
